@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DinnerDeltag</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/script.js" defer></script>
+</head>
+
+<body>
+    <div id="calendar-container">
+        <header>
+            <h1 id="monthName">October</h1>
+            <div id="navButtons">
+                <button id="prevMonth" onclick="changeMonth(-1)">&#10094;</button>
+                <button id="nextMonth" onclick="changeMonth(1)">&#10095;</button>
+            </div>
+        </header>
+
+        <table id="calendar">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Calendar days will be injected here by JavaScript -->
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>

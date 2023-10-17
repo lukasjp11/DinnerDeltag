@@ -1,21 +1,92 @@
+
+/* Reset some default styling */
+body, h1, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply dark theme */
 body {
+    background-color: #333;
+    color: white;
     font-family: Arial, sans-serif;
 }
 
-#signup-form, #guest-form {
-    margin-bottom: 20px;
+#calendar-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #444;
+    border-radius: 10px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input {
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
-    display: block;
 }
 
 button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
     cursor: pointer;
+    background-color: #555;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #555;
+}
+
+td {
+    cursor: pointer;
+}
+
+#users {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}
+
+/* Gray out the days from the previous and next month */
+td.grayed-out {
+    color: #888;
+    opacity: 0.5;
+}
+
+/* Fix the position of the month navigation buttons */
+header {
+    position: relative;
+}
+
+#navButtons {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
