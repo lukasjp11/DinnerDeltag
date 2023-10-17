@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aftensmadstilmelding</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <div id="calendar"></div>
+
+    <div id="signup-form">
+        <h2>Tilmelding til aftensmad</h2>
+        <label for="name">Navn:</label>
+        <input type="text" id="name">
+        <label for="date">Dato:</label>
+        <input type="date" id="date">
+        <button onclick="signup()">Tilmeld</button>
+    </div>
+
+    <div id="guest-form">
+        <h2>Tilmeld gæst til aftensmad</h2>
+        <label for="guest-name">Gæstens navn:</label>
+        <input type="text" id="guest-name">
+        <label for="guest-date">Dato:</label>
+        <input type="date" id="guest-date">
+        <button onclick="addGuest()">Tilføj gæst</button>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
