@@ -5,7 +5,6 @@ const dinnerDeltagApp = {
 
     init() {
         this.updateCalendar();
-        this.addSwipeListeners();
     },
 
     updateCalendar() {
