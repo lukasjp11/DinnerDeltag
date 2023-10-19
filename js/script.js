@@ -9,7 +9,7 @@ function updateCalendar() {
     const calendarBody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
 
     // Set the month name
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthNames = ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December'];
     monthName.innerText = monthNames[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
 
     // Clear the previous calendar
@@ -65,7 +65,7 @@ function highlightSelectedDates() {
                 cell.style.backgroundColor = 'green';
                 cell.style.color = 'white';
                 cell.innerHTML = `<strong>${dateInfo.date}</strong>
-                                  <div>${dateInfo.person}<br>${dateInfo.guest ? 'With Guest' : ''}</div>`;
+                                  <div>${dateInfo.person}<br>${dateInfo.guest ? 'Med gæster' : ''}</div>`;
             }
         }
     });
@@ -84,7 +84,7 @@ function openModal() {
 }
 
 // Function to close the modal and capture the selected values
-function closeModal() {
+function closeModalAndSave() {
     const selectedName = document.getElementById("names").value;
     const isGuest = document.getElementById("guest").checked;
 
@@ -107,6 +107,12 @@ function closeModal() {
     updateCalendar();
     document.getElementById("modal").style.display = "none";
 }
+
+// Function to close the modal without saving the changes
+function closeModalWithoutSaving() {
+    document.getElementById("modal").style.display = "none";
+}
+
 
 // Function to attach click event to calendar cells
 function attachClickEventToCells() {

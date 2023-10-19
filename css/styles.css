@@ -1,3 +1,16 @@
+/* Define color variables */
+:root {
+    --background-color: #333;
+    --text-color: white;
+    --calendar-bg-color: #444;
+    --button-bg-color: #555;
+    --button-hover-bg-color: #666;
+    --border-color: #555;
+    --grayed-out-color: #888;
+    --selected-bg-color: green;
+    --modal-bg-color: rgba(0,0,0,0.5);
+    --overlay-bg-color: rgba(0, 128, 0, 0.7);
+}
 
 /* Reset some default styling */
 body, h1, button {
@@ -7,8 +20,8 @@ body, h1, button {
 
 /* Apply dark theme */
 body {
-    background-color: #333;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
 }
 
@@ -16,35 +29,32 @@ body {
     max-width: 800px;
     margin: auto;
     padding: 20px;
-    background-color: #444;
+    background-color: var(--calendar-bg-color);
     border-radius: 10px;
 }
 
-/* Updated styles for the calendar cells to have a fixed size */
 #calendar tbody td {
-    width: 100px; /* or adjust as needed */
-    height: 80px; /* or adjust as needed */
-    font-size: 12px; /* or adjust as needed */
-    vertical-align: top; /* aligns the content to the top of the cell */
+    width: 100px;
+    height: 80px;
+    font-size: 12px;
+    vertical-align: top;
     position: relative;
 }
 
-/* Add this style to make sure content overflows nicely */
 #calendar tbody td strong {
     display: block;
     margin-bottom: 5px;
 }
 
-/* Add this style to overlay person and guest information nicely */
 #calendar tbody td div {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 128, 0, 0.7); /* green background with some transparency */
-    color: white;
+    background-color: var(--overlay-bg-color);
+    color: var(--text-color);
     padding: 5px;
-    font-size: 10px; /* adjust as needed */
+    font-size: 10px;
     line-height: 1.2;
 }
 
@@ -60,13 +70,13 @@ button {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    background-color: #555;
-    color: white;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: #666;
+    background-color: var(--button-hover-bg-color);
 }
 
 table {
@@ -77,38 +87,18 @@ table {
 th, td {
     padding: 10px;
     text-align: center;
-    border: 1px solid #555;
+    border: 1px solid var(--border-color);
 }
 
 td {
     cursor: pointer;
 }
 
-#users {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-/* Responsive design adjustments */
-@media (max-width: 600px) {
-    button {
-        padding: 5px 10px;
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 5px;
-    }
-}
-
-/* Gray out the days from the previous and next month */
 td.grayed-out {
-    color: #888;
+    color: var(--grayed-out-color);
     opacity: 0.5;
 }
 
-/* Fix the position of the month navigation buttons */
 header {
     position: relative;
 }
@@ -119,7 +109,6 @@ header {
     right: 0;
 }
 
-/* The Modal (background) */
 .modal {
     display: none;
     position: fixed;
@@ -129,11 +118,10 @@ header {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: var(--modal-bg-color);
     transition: opacity 0.3s ease;
 }
 
-/* Modal Content */
 .modal-content {
     position: fixed;
     top: 50%;
@@ -141,12 +129,11 @@ header {
     transform: translate(-50%, -50%);
     padding: 40px;
     width: 300px;
-    background-color: #333;
+    background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* The Close Button */
 .close {
     color: #aaa;
     position: absolute;
@@ -163,7 +150,7 @@ header {
     cursor: pointer;
 }
 
-/* Styles for labels, selects, and button */
+.modal-content h2,
 .modal-content label,
 .modal-content select,
 .modal-content button {
@@ -172,14 +159,13 @@ header {
 }
 
 .modal-content h2 {
-    font-family: Arial, sans-serif;
-    margin: 0 0 20px 0;
+    margin-bottom: 30px; /* Juster denne værdi efter behov */
 }
 
 .modal-content button {
     padding: 10px 20px;
-    background-color: #555;
-    color: white;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -187,7 +173,17 @@ header {
 }
 
 .modal-content button:hover {
-    background-color: #666;
+    background-color: var(--button-hover-bg-color);
 }
 
+/* Responsive design adjustments */
+@media (max-width: 600px) {
+    button {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
 
+    th, td {
+        padding: 5px;
+    }
+}

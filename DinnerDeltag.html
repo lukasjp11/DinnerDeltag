@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
 
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
 <body>
     <div id="calendar-container">
         <header>
-            <h1 id="monthName">October</h1>
+            <h1 id="monthName">Oktober</h1>
             <div id="navButtons">
                 <button id="prevMonth" onclick="changeMonth(-1)">&#10094;</button>
                 <button id="nextMonth" onclick="changeMonth(1)">&#10095;</button>
@@ -22,13 +22,13 @@
         <table id="calendar">
             <thead>
                 <tr>
-                    <th>Mon</th>
-                    <th>Tue</th>
-                    <th>Wed</th>
-                    <th>Thu</th>
-                    <th>Fri</th>
-                    <th>Sat</th>
-                    <th>Sun</th>
+                    <th>Man</th>
+                    <th>Tir</th>
+                    <th>Ons</th>
+                    <th>Tor</th>
+                    <th>Fre</th>
+                    <th>Lør</th>
+                    <th>Søn</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,23 +39,21 @@
 
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Select Person and Guest Option</h2>
-            <label for="names">Name:</label>
+            <span class="close" onclick="closeModalWithoutSaving()">&times;</span>
+            <h2>Vælg person</h2>
+            <label for="names">Navn:</label>
             <select id="names">
                 <option value="Lukas">Lukas</option>
                 <option value="Silas">Silas</option>
                 <option value="Anton">Anton</option>
             </select>
             <br><br>
-            <label for="guest">Guest staying over for dinner</label>
+            <label for="guest">Gæster?</label>
             <input type="checkbox" id="guest" name="guest">
             <br><br>
-            <button onclick="closeModal()">Submit</button>
+            <button onclick="closeModalAndSave()">Indsend</button>          
         </div>
     </div>
-    
-    
 </body>
 
 </html>
