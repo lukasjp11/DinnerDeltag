@@ -41,7 +41,20 @@ const dinnerDeltagApp = {
 
     setMonthName() {
         const monthName = document.getElementById('monthName');
-        const monthNames = ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'December'];
+        const monthNames = [
+            '❄️ Januar', 
+            '💘 Februar', 
+            '🌱 Marts', 
+            '☔ April', 
+            '🌸 Maj', 
+            '☀️ Juni', 
+            '🏖️ Juli', 
+            '🌻 August', 
+            '🍂 September', 
+            '🎃 Oktober', 
+            '🍁 November', 
+            '🎄 December'
+        ];
         monthName.innerText = `${monthNames[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
     },
 
