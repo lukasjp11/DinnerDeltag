@@ -148,7 +148,7 @@ const dinnerDeltagApp = {
         };
 
         const handleTouchEnd = () => {
-            const swipeThreshold = 100;
+            const swipeThreshold = 50;
             if (touchEndX < touchStartX - swipeThreshold) {
                 this.changeMonth(1);
             } else if (touchEndX > touchStartX + swipeThreshold) {
