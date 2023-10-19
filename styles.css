@@ -6,8 +6,6 @@
     --calendar-bg-color: #444;
     --grayed-out-color: #888;
     --modal-bg-color: rgba(0,0,0,0.5);
-    --overlay-bg-color: rgba(0, 128, 0, 0.7);
-    --selected-bg-color: green;
     --text-color: white;
 }
 
@@ -108,7 +106,6 @@ td {
 }
 
 #calendar tbody td div {
-    background-color: var(--overlay-bg-color);
     bottom: 0;
     color: var(--text-color);
     font-size: 13px;
@@ -138,44 +135,81 @@ td {
 
 .modal-content {
     background-color: var(--background-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     left: 50%;
     padding: 40px;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 500px;
+    max-width: 90%;
 }
 
-.modal-content h2 {
-    margin-bottom: 30px;
+#attendance-list {
+    background-color: #444;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#attendance-list h3 {
+    color: #eee;
+    margin-bottom: 10px;
+}
+
+#attendance-list div {
+    margin-bottom: 10px;
+}
+
+#attendance-list label {
+    color: #ccc;
+    margin-right: 10px;
+}
+
+#attendance-list input[type="radio"] {
+    margin: 0 5px;
 }
 
 .close {
-    color: #aaa;
+    color: #ccc;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
     right: 10px;
     top: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
 .close:hover, .close:focus {
-    color: black;
-    cursor: pointer;
-    text-decoration: none;
+    color: #fff;
 }
 
 #modal select {
-    background-color: var(--calendar-bg-color);
-    border: 1px solid var(--text-color);
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    font-size: 16px; 
+    background-color: #555;
+    border: 1px solid #777;
+    color: #fff;
     border-radius: 5px;
-    color: var(--text-color);
-    padding: 5px;
+}
+
+#modal select:focus {
+    border-color: #fff;
+    outline: none;
 }
 
 #modal option {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: #555;
+    color: #fff;
+}
+
+.modal-content button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-right: 10px;
 }

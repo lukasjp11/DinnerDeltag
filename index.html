@@ -43,8 +43,29 @@
         <div class="modal-content">
             <span class="close" onclick="closeModalWithoutSaving()">&times;</span>
             <h2>Vælg person</h2>
+
+            <div id="attendance-list">
+                <h3>Deltagelse:</h3>
+                <div id="Lukas-attendance">
+                    <label for="Lukas">Lukas:</label>
+                    <input type="radio" id="Lukas-yes" name="Lukas" value="yes" checked>✅
+                    <input type="radio" id="Lukas-no" name="Lukas" value="no">❌
+                </div>
+                <div id="Silas-attendance">
+                    <label for="Silas">Silas:</label>
+                    <input type="radio" id="Silas-yes" name="Silas" value="yes" checked>✅
+                    <input type="radio" id="Silas-no" name="Silas" value="no">❌
+                </div>
+                <div id="Anton-attendance">
+                    <label for="Anton">Anton:</label>
+                    <input type="radio" id="Anton-yes" name="Anton" value="yes" checked>✅
+                    <input type="radio" id="Anton-no" name="Anton" value="no">❌
+                </div>
+            </div>
+
             <label for="names">Navn:</label>
             <select id="names">
+                <option value="none">Ingen</option>
                 <option value="Lukas">Lukas</option>
                 <option value="Silas">Silas</option>
                 <option value="Anton">Anton</option>

@@ -110,28 +110,31 @@ const dinnerDeltagApp = {
     },
 
     highlightSelectedDates() {
+        document.querySelectorAll('#calendar tbody td').forEach(cell => {
+            cell.style.backgroundColor = '';
+        });
+
         this.selectedDates.forEach(dateInfo => {
             if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
                 const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
                 
                 if (cell) {
-                    cell.style.backgroundColor = 'green';
+                    cell.style.backgroundColor = dateInfo.isCookSelected ? 'green' : '#DAA520';
                     cell.style.color = 'white';
     
                     const allNames = ['Lukas', 'Silas', 'Anton'];
                     const cookName = dateInfo.person;
                     const otherNames = allNames.filter(name => name !== cookName);
                     const orderedNames = [cookName].concat(otherNames);
-    
+                    
                     let namesHTML = '';
                     orderedNames.forEach(name => {
-                        if (name === cookName) {
+                        if (name === cookName && cookName !== 'none') {
                             namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
-                        } else {
-                            namesHTML += `${name}<br>`;
+                        } else if (name !== 'none') {
+                            namesHTML += `${name} ${dateInfo.attendance[name] === 'yes' ? '✅' : '❌'}<br>`;
                         }
                     });
-    
                     cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
                 }
             }
@@ -153,6 +156,12 @@ const dinnerDeltagApp = {
         const isGuest = document.getElementById("guest").checked;
         const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
         const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
+        const isCookSelected = selectedName !== 'none';
+        const attendance = { 
+            Lukas: document.querySelector('input[name="Lukas"]:checked').value,
+            Silas: document.querySelector('input[name="Silas"]:checked').value,
+            Anton: document.querySelector('input[name="Anton"]:checked').value
+        };
 
         const selectedDateInfo = {
             date: this.clickedDate,
@@ -160,7 +169,9 @@ const dinnerDeltagApp = {
             year: this.currentDate.getFullYear(),
             person: selectedName,
             guest: isGuest,
-            firstDay: adjustedFirstDay
+            firstDay: adjustedFirstDay,
+            attendance: attendance,
+            isCookSelected: isCookSelected
         };
 
         this.selectedDates = this.selectedDates.filter(dateInfo => dateInfo.date !== this.clickedDate || dateInfo.month !== this.currentDate.getMonth() || dateInfo.year !== this.currentDate.getFullYear());
