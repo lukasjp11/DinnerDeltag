@@ -124,6 +124,16 @@ const dinnerDeltagApp = {
         document.getElementById("modal").style.display = "none";
     },
 
+    clearSelectedDate() {
+        this.selectedDates = this.selectedDates.filter(dateInfo => 
+            !(dateInfo.date === this.clickedDate && 
+              dateInfo.month === this.currentDate.getMonth() && 
+              dateInfo.year === this.currentDate.getFullYear())
+        );
+        this.updateCalendar();
+        document.getElementById("modal").style.display = "none";
+    },
+
     attachClickEventToCells() {
         document.querySelectorAll('#calendar tbody td').forEach(cell => {
             cell.addEventListener('click', () => {
@@ -167,3 +177,4 @@ dinnerDeltagApp.init();
 window.changeMonth = dinnerDeltagApp.changeMonth.bind(dinnerDeltagApp);
 window.closeModalWithoutSaving = dinnerDeltagApp.closeModalWithoutSaving.bind(dinnerDeltagApp);
 window.closeModalAndSave = dinnerDeltagApp.closeModalAndSave.bind(dinnerDeltagApp);
+window.clearSelectedDate = dinnerDeltagApp.clearSelectedDate.bind(dinnerDeltagApp);

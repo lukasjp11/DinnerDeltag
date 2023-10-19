@@ -134,6 +134,10 @@ td {
     width: 300px;
 }
 
+.modal-content h2 {
+    margin-bottom: 30px;
+}
+
 .close {
     color: #aaa;
     font-size: 28px;
