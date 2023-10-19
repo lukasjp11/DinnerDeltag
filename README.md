@@ -1,8 +1,6 @@
-<img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" width="200"/>
+# DinnerDeltag <img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" width="100"/> - [Åbn App](https://lukasjp11.github.io/DinnerDeltag/)
 
-# DinnerDeltag 🍽️ - [Åbn App](https://lukasjp11.github.io/DinnerDeltag/)
-
-DinnerDeltag er en simpel webapplikation 💻 skabt specielt til en lejlighed i Brabrand, bestående af Lukas, Silas og Anton. Applikationen hjælper med at holde styr på, hvem der deltager i aftensmaden hver dag i måneden 📅. Den er bygget med HTML, CSS og JavaScript, og er nem at bruge og tilpasse 🛠️.
+DinnerDeltag er en simpel webapplikation 💻 skabt specielt til en lejlighed i Brabrand, bestående af Lukas, Silas og Anton. Applikationen hjælper med at holde styr på, hvem der deltager i aftensmaden hver dag i måneden 🍽️📅. Den er bygget med HTML, CSS og JavaScript, og er nem at bruge og tilpasse 🛠️.
 
 ## Indhold 📖
 
