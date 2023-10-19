@@ -1,18 +1,18 @@
-/* Define color variables */
 :root {
     --background-color: #333;
-    --text-color: white;
-    --calendar-bg-color: #444;
+    --border-color: #555;
     --button-bg-color: #555;
     --button-hover-bg-color: #666;
-    --border-color: #555;
+    --calendar-bg-color: #444;
     --grayed-out-color: #888;
-    --selected-bg-color: green;
     --modal-bg-color: rgba(0,0,0,0.5);
     --overlay-bg-color: rgba(0, 128, 0, 0.7);
+    --selected-bg-color: green;
+    --text-color: white;
 }
 
-body, h1, button {
+* {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -20,23 +20,75 @@ body, h1, button {
 body {
     background-color: var(--background-color);
     color: var(--text-color);
-    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#navButtons {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+button, .modal-content button {
+    background-color: var(--button-bg-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .modal-content button:hover {
+    background-color: var(--button-hover-bg-color);
 }
 
 #calendar-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
     background-color: var(--calendar-bg-color);
     border-radius: 10px;
+    margin: auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    cursor: pointer;
+}
+
+.today {
+    border: 3px solid var(--button-hover-bg-color);
+}
+
+.grayed-out {
+    color: var(--grayed-out-color);
+    opacity: 0.5;
 }
 
 #calendar tbody td {
-    width: 100px;
-    height: 80px;
     font-size: 16px;
-    vertical-align: top;
+    height: 80px;
     position: relative;
+    vertical-align: top;
+    width: 100px;
 }
 
 #calendar tbody td strong {
@@ -45,222 +97,67 @@ body {
 }
 
 #calendar tbody td div {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: var(--overlay-bg-color);
+    bottom: 0;
     color: var(--text-color);
-    padding: 5px;
     font-size: 14px;
     font-weight: bold;
+    left: 0;
     line-height: 1.2;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    background-color: var(--button-bg-color);
-    color: var(--text-color);
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: var(--button-hover-bg-color);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid var(--border-color);
-}
-
-td {
-    cursor: pointer;
-}
-
-td.grayed-out {
-    color: var(--grayed-out-color);
-    opacity: 0.5;
-}
-
-header {
-    position: relative;
-}
-
-#navButtons {
+    padding: 5px;
     position: absolute;
-    top: 0;
     right: 0;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
     background-color: var(--modal-bg-color);
+    display: none;
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
     transition: opacity 0.3s ease;
+    width: 100%;
+    z-index: 1;
 }
 
 .modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 40px;
-    width: 300px;
     background-color: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    left: 50%;
+    padding: 40px;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
 }
 
 .close {
     color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 10px;
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
     color: black;
-    text-decoration: none;
     cursor: pointer;
+    text-decoration: none;
 }
-
-.modal-content h2,
-.modal-content label,
-.modal-content select,
-.modal-content button {
-    font-family: Arial, sans-serif;
-    margin-bottom: 10px;
-}
-
-.modal-content h2 {
-    margin-bottom: 30px; /* Juster denne værdi efter behov */
-}
-
-
 
 #modal select {
     background-color: var(--calendar-bg-color);
-    color: var(--text-color);
     border: 1px solid var(--text-color);
-    padding: 5px;
     border-radius: 5px;
+    color: var(--text-color);
+    padding: 5px;
 }
 
 #modal option {
     background-color: var(--background-color);
     color: var(--text-color);
-}
-
-
-.modal-content button {
-    padding: 10px 20px;
-    background-color: var(--button-bg-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.modal-content button:hover {
-    background-color: var(--button-hover-bg-color);
-}
-
-.today {
-    border: 3px solid var(--button-hover-bg-color);
-}
-
-
-/* Mobiltelefoner og mindre skærme */
-@media (max-width: 600px) {
-    #calendar tbody td {
-        width: 80px;
-        height: 64px;
-        font-size: 12px;
-    }
-    
-    button {
-        padding: 5px 10px;
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 5px;
-    }
-    
-    .modal-content {
-        width: 80%;
-        font-size: 14px;
-    }
-}
-
-/* Tablets og mellemstore skærme */
-@media (min-width: 601px) and (max-width: 1024px) {
-    #calendar tbody td {
-        width: 120px;
-        height: 96px;
-        font-size: 16px;
-    }
-    
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-
-    th, td {
-        padding: 10px;
-    }
-    
-    .modal-content {
-        width: 60%;
-        font-size: 16px;
-    }
-}
-
-/* Store skærme */
-@media (min-width: 1025px) {
-    #calendar tbody td {
-        width: 150px;
-        height: 120px;
-        font-size: 20px;
-    }
-    
-    button {
-        padding: 15px 30px;
-        font-size: 20px;
-    }
-
-    th, td {
-        padding: 15px;
-    }
-    
-    .modal-content {
-        width: 40%;
-        font-size: 18px;
-    }
 }
