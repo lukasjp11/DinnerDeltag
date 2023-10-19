@@ -81,7 +81,7 @@ const dinnerDeltagApp = {
                 if (cell) {
                     cell.style.backgroundColor = 'green';
                     cell.style.color = 'white';
-                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${dateInfo.person}<br>${dateInfo.guest ? 'Med gæster' : ''}</div>`;
+                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${dateInfo.person}<br>${dateInfo.guest ? '(gæster)' : ''}</div>`;
                 }
             }
         });
