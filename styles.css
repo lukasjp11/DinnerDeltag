@@ -103,11 +103,10 @@ td {
     color: var(--text-color);
     font-size: 13px;
     font-weight: bold;
-
     word-break: break-word;
     max-width: 90px;
     overflow: hidden; 
-
+    margin: auto;
     left: 0;
     line-height: 1.2;
     padding: 5px;
