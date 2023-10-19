@@ -4,7 +4,12 @@ const dinnerDeltagApp = {
     clickedDate: null,
 
     init() {
-        this.updateCalendar();
+        const dbRef = firebase.database().ref('selectedDates/');
+        dbRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            this.selectedDates = data ? data : [];
+            this.updateCalendar();
+        });
     },
 
     updateCalendar() {
@@ -114,6 +119,9 @@ const dinnerDeltagApp = {
 
         this.selectedDates = this.selectedDates.filter(dateInfo => dateInfo.date !== this.clickedDate || dateInfo.month !== this.currentDate.getMonth() || dateInfo.year !== this.currentDate.getFullYear());
         this.selectedDates.push(selectedDateInfo);
+
+        const dbRef = firebase.database().ref('selectedDates/');
+        dbRef.set(this.selectedDates);
 
         this.updateCalendar();
         document.getElementById("modal").style.display = "none";
