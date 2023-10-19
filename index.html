@@ -14,11 +14,10 @@
         <header>
             <h1 id="monthName">Oktober</h1>
             <div id="navButtons">
-                <button id="prevMonth" onclick="window.changeMonth(-1)">&#10094;</button>
-                <button id="nextMonth" onclick="window.changeMonth(1)">&#10095;</button>
+                <button id="prevMonth" onclick="changeMonth(-1)">&#10094;</button>
+                <button id="nextMonth" onclick="changeMonth(1)">&#10095;</button>
             </div>
         </header>
-
         <table id="calendar">
             <thead>
                 <tr>
@@ -36,10 +35,9 @@
             </tbody>
         </table>
     </div>
-
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="window.closeModalWithoutSaving()">&times;</span>
+            <span class="close" onclick="closeModalWithoutSaving()">&times;</span>
             <h2>Vælg person</h2>
             <label for="names">Navn:</label>
             <select id="names">
@@ -51,9 +49,8 @@
             <label for="guest">Gæster?</label>
             <input type="checkbox" id="guest" name="guest">
             <br><br>
-            <button onclick="window.closeModalAndSave()">Gem</button> 
-            <button onclick="window.clearSelectedDate()">Ryd</button>
-         
+            <button onclick="closeModalAndSave()">Gem</button>
+            <button onclick="clearSelectedDate()">Ryd</button>
         </div>
     </div>
 </body>
