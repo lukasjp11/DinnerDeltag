@@ -36,7 +36,7 @@ body {
 #calendar tbody td {
     width: 100px;
     height: 80px;
-    font-size: 12px;
+    font-size: 16px;
     vertical-align: top;
     position: relative;
 }
@@ -54,7 +54,7 @@ body {
     background-color: var(--overlay-bg-color);
     color: var(--text-color);
     padding: 5px;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 1.2;
 }
 
