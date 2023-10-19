@@ -11,6 +11,7 @@ DinnerDeltag er en simpel webapplikation 💻 skabt specielt til en lejlighed i 
 ## Adgang 🚪
 
 Du kan tilgå applikationen direkte via [GitHub Pages](https://lukasjp11.github.io/DinnerDeltag/).
+
 Applikationen bruger Firebase som dens database for at lagre og hente data i realtid 🔄. Det sikrer, at information om deltagelse opdateres øjeblikkeligt for alle brugere 👥.
 
 ## Brugervejledning 📚
