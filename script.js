@@ -132,7 +132,7 @@ const dinnerDeltagApp = {
                         if (name === cookName && cookName !== 'none') {
                             namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
                         } else if (name !== 'none') {
-                            namesHTML += `${name} ${dateInfo.attendance[name] === 'yes' ? '✅' : '❌'}<br>`;
+                            namesHTML += `${name} ${dateInfo.attendance[name] ? '✅' : '❌'}<br>`;
                         }
                     });
                     cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
@@ -146,21 +146,60 @@ const dinnerDeltagApp = {
         this.updateCalendar();
     },
 
-    openModal() {
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("guest").checked = false;
+    toggleAttendance(name) {
+        const statusElement = document.getElementById(`${name}-status`);
+        if (statusElement.textContent === '✅') {
+            statusElement.textContent = '❌';
+        } else {
+            statusElement.textContent = '✅';
+        }
     },
 
+    openModal() {
+        let lukasStatus = '✅';
+        let silasStatus = '✅';
+        let antonStatus = '✅';
+        let selectedName = 'none';
+        let isGuest = false;
+    
+        const existingDateInfo = this.selectedDates.find(dateInfo => 
+            dateInfo.date === this.clickedDate &&
+            dateInfo.month === this.currentDate.getMonth() &&
+            dateInfo.year === this.currentDate.getFullYear());
+    
+        if (existingDateInfo) {
+            lukasStatus = existingDateInfo.attendance.Lukas ? '✅' : '❌';
+            silasStatus = existingDateInfo.attendance.Silas ? '✅' : '❌';
+            antonStatus = existingDateInfo.attendance.Anton ? '✅' : '❌';
+            
+            selectedName = existingDateInfo.person;
+            isGuest = existingDateInfo.guest;
+        }
+    
+        document.getElementById('Lukas-status').innerText = lukasStatus;
+        document.getElementById('Silas-status').innerText = silasStatus;
+        document.getElementById('Anton-status').innerText = antonStatus;
+    
+        document.getElementById('names').value = selectedName;
+        document.getElementById('guest').checked = isGuest;
+    
+        document.getElementById("modal").style.display = "block";
+    },    
+    
     closeModalAndSave() {
         const selectedName = document.getElementById("names").value;
         const isGuest = document.getElementById("guest").checked;
         const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
         const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
-        const isCookSelected = selectedName !== 'none';
+
+        const lukasStatus = document.getElementById('Lukas-status').innerText === '✅';
+        const silasStatus = document.getElementById('Silas-status').innerText === '✅';
+        const antonStatus = document.getElementById('Anton-status').innerText === '✅';
+
         const attendance = { 
-            Lukas: document.querySelector('input[name="Lukas"]:checked').value,
-            Silas: document.querySelector('input[name="Silas"]:checked').value,
-            Anton: document.querySelector('input[name="Anton"]:checked').value
+            Lukas: lukasStatus,
+            Silas: silasStatus,
+            Anton: antonStatus
         };
 
         const selectedDateInfo = {
@@ -171,10 +210,13 @@ const dinnerDeltagApp = {
             guest: isGuest,
             firstDay: adjustedFirstDay,
             attendance: attendance,
-            isCookSelected: isCookSelected
+            isCookSelected: selectedName !== 'none'
         };
 
-        this.selectedDates = this.selectedDates.filter(dateInfo => dateInfo.date !== this.clickedDate || dateInfo.month !== this.currentDate.getMonth() || dateInfo.year !== this.currentDate.getFullYear());
+        this.selectedDates = this.selectedDates.filter(dateInfo => 
+            dateInfo.date !== this.clickedDate || 
+            dateInfo.month !== this.currentDate.getMonth() || 
+            dateInfo.year !== this.currentDate.getFullYear());
         this.selectedDates.push(selectedDateInfo);
 
         const dbRef = ref(db, 'selectedDates/');
@@ -223,3 +265,4 @@ window.changeMonth = dinnerDeltagApp.changeMonth.bind(dinnerDeltagApp);
 window.closeModalWithoutSaving = dinnerDeltagApp.closeModalWithoutSaving.bind(dinnerDeltagApp);
 window.closeModalAndSave = dinnerDeltagApp.closeModalAndSave.bind(dinnerDeltagApp);
 window.clearSelectedDate = dinnerDeltagApp.clearSelectedDate.bind(dinnerDeltagApp);
+window.toggleAttendance = dinnerDeltagApp.toggleAttendance.bind(dinnerDeltagApp);

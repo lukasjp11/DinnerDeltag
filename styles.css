@@ -7,6 +7,7 @@
     --grayed-out-color: #888;
     --modal-bg-color: rgba(0,0,0,0.5);
     --text-color: white;
+    --dark-yellow: #d1a800;
 }
 
 * {
@@ -20,9 +21,14 @@ body {
     color: var(--text-color);
 }
 
-header {
+header,
+#right-section,
+#navButtons {
     display: flex;
     align-items: center;
+}
+
+header {
     justify-content: space-between;
     margin-bottom: 20px;
     position: relative;
@@ -32,13 +38,6 @@ header {
     position: absolute;
     right: 0;
     top: 0;
-    display: flex;
-    align-items: center;
-}
-
-#navButtons {
-    display: flex;
-    align-items: center;
 }
 
 #navButtons button {
@@ -109,15 +108,15 @@ td {
     bottom: 0;
     color: var(--text-color);
     font-size: 13px;
-    word-break: break-word;
     max-width: 90px;
-    overflow: hidden; 
+    overflow: hidden;
     margin: auto;
     left: 0;
     line-height: 1.2;
     padding: 5px;
     position: absolute;
     right: 0;
+    word-break: break-word;
 }
 
 .modal {
@@ -146,6 +145,10 @@ td {
     max-width: 90%;
 }
 
+#attendance-list h3 {
+    margin-bottom: 10px;
+}
+
 #attendance-list {
     background-color: #444;
     border-radius: 5px;
@@ -153,22 +156,28 @@ td {
     margin-bottom: 20px;
 }
 
-#attendance-list h3 {
-    color: #eee;
-    margin-bottom: 10px;
+#attendance-list label {
+    color: #ccc;
+    margin-right: 10px;
+    display: inline-block;
+    width: 60px;
+    text-align: right;
 }
 
 #attendance-list div {
     margin-bottom: 10px;
 }
 
-#attendance-list label {
-    color: #ccc;
-    margin-right: 10px;
+#attendance-list span {
+    cursor: pointer;
+    padding: 5px;
+    
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-#attendance-list input[type="radio"] {
-    margin: 0 5px;
+#attendance-list span:hover {
+    background-color: var(--button-hover-bg-color);
 }
 
 .close {
@@ -187,10 +196,10 @@ td {
 }
 
 #modal select {
-    width: 100%; 
-    padding: 10px; 
-    margin-bottom: 20px; 
-    font-size: 16px; 
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
     background-color: #555;
     border: 1px solid #777;
     color: #fff;
@@ -203,13 +212,6 @@ td {
 }
 
 #modal option {
-    background-color: #555;
+    background-color: #444;
     color: #fff;
-}
-
-.modal-content button {
-    padding: 12px 25px;
-    font-size: 18px;
-    border-radius: 5px;
-    margin-right: 10px;
 }
