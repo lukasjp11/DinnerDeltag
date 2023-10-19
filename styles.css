@@ -97,11 +97,17 @@ td {
 }
 
 #calendar tbody td div {
+    
     background-color: var(--overlay-bg-color);
     bottom: 0;
     color: var(--text-color);
     font-size: 13px;
     font-weight: bold;
+
+    word-break: break-word;
+    max-width: 90px;
+    overflow: hidden; 
+
     left: 0;
     line-height: 1.2;
     padding: 5px;
