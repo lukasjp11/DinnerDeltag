@@ -110,34 +110,97 @@ const dinnerDeltagApp = {
     },
 
     highlightSelectedDates() {
+        document.querySelectorAll('#calendar tbody td').forEach(cell => {
+            cell.style.backgroundColor = '';
+        });
+
         this.selectedDates.forEach(dateInfo => {
             if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
                 const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
                 
                 if (cell) {
-                    cell.style.backgroundColor = 'green';
+                    cell.style.backgroundColor = dateInfo.isCookSelected ? 'green' : '#DAA520';
                     cell.style.color = 'white';
-                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${dateInfo.person}<br>${dateInfo.guest ? '(gæster)' : ''}</div>`;
+    
+                    const allNames = ['Lukas', 'Silas', 'Anton'];
+                    const cookName = dateInfo.person;
+                    const otherNames = allNames.filter(name => name !== cookName);
+                    const orderedNames = [cookName].concat(otherNames);
+                    
+                    let namesHTML = '';
+                    orderedNames.forEach(name => {
+                        if (name === cookName && cookName !== 'none') {
+                            namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
+                        } else if (name !== 'none') {
+                            namesHTML += `${name} ${dateInfo.attendance[name] ? '✅' : '❌'}<br>`;
+                        }
+                    });
+                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
                 }
             }
         });
-    },
+    },    
 
     changeMonth(direction) {
         this.currentDate.setMonth(this.currentDate.getMonth() + direction);
         this.updateCalendar();
     },
 
-    openModal() {
-        document.getElementById("modal").style.display = "block";
-        document.getElementById("guest").checked = false;
+    toggleAttendance(name) {
+        const statusElement = document.getElementById(`${name}-status`);
+        if (statusElement.textContent === '✅') {
+            statusElement.textContent = '❌';
+        } else {
+            statusElement.textContent = '✅';
+        }
     },
 
+    openModal() {
+        let lukasStatus = '✅';
+        let silasStatus = '✅';
+        let antonStatus = '✅';
+        let selectedName = 'none';
+        let isGuest = false;
+    
+        const existingDateInfo = this.selectedDates.find(dateInfo => 
+            dateInfo.date === this.clickedDate &&
+            dateInfo.month === this.currentDate.getMonth() &&
+            dateInfo.year === this.currentDate.getFullYear());
+    
+        if (existingDateInfo) {
+            lukasStatus = existingDateInfo.attendance.Lukas ? '✅' : '❌';
+            silasStatus = existingDateInfo.attendance.Silas ? '✅' : '❌';
+            antonStatus = existingDateInfo.attendance.Anton ? '✅' : '❌';
+            
+            selectedName = existingDateInfo.person;
+            isGuest = existingDateInfo.guest;
+        }
+    
+        document.getElementById('Lukas-status').innerText = lukasStatus;
+        document.getElementById('Silas-status').innerText = silasStatus;
+        document.getElementById('Anton-status').innerText = antonStatus;
+    
+        document.getElementById('names').value = selectedName;
+        document.getElementById('guest').checked = isGuest;
+    
+        document.getElementById("modal").style.display = "block";
+    },    
+    
     closeModalAndSave() {
         const selectedName = document.getElementById("names").value;
         const isGuest = document.getElementById("guest").checked;
         const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
         const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
+
+        const lukasStatus = document.getElementById('Lukas-status').innerText === '✅';
+        const silasStatus = document.getElementById('Silas-status').innerText === '✅';
+        const antonStatus = document.getElementById('Anton-status').innerText === '✅';
+
+        const attendance = { 
+            Lukas: lukasStatus,
+            Silas: silasStatus,
+            Anton: antonStatus
+        };
 
         const selectedDateInfo = {
             date: this.clickedDate,
@@ -145,10 +208,15 @@ const dinnerDeltagApp = {
             year: this.currentDate.getFullYear(),
             person: selectedName,
             guest: isGuest,
-            firstDay: adjustedFirstDay
+            firstDay: adjustedFirstDay,
+            attendance: attendance,
+            isCookSelected: selectedName !== 'none'
         };
 
-        this.selectedDates = this.selectedDates.filter(dateInfo => dateInfo.date !== this.clickedDate || dateInfo.month !== this.currentDate.getMonth() || dateInfo.year !== this.currentDate.getFullYear());
+        this.selectedDates = this.selectedDates.filter(dateInfo => 
+            dateInfo.date !== this.clickedDate || 
+            dateInfo.month !== this.currentDate.getMonth() || 
+            dateInfo.year !== this.currentDate.getFullYear());
         this.selectedDates.push(selectedDateInfo);
 
         const dbRef = ref(db, 'selectedDates/');
@@ -197,3 +265,4 @@ window.changeMonth = dinnerDeltagApp.changeMonth.bind(dinnerDeltagApp);
 window.closeModalWithoutSaving = dinnerDeltagApp.closeModalWithoutSaving.bind(dinnerDeltagApp);
 window.closeModalAndSave = dinnerDeltagApp.closeModalAndSave.bind(dinnerDeltagApp);
 window.clearSelectedDate = dinnerDeltagApp.clearSelectedDate.bind(dinnerDeltagApp);
+window.toggleAttendance = dinnerDeltagApp.toggleAttendance.bind(dinnerDeltagApp);
