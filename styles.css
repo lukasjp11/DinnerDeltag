@@ -196,14 +196,71 @@ header {
 }
 
 
-/* Responsive design adjustments */
+/* Mobiltelefoner og mindre skærme */
 @media (max-width: 600px) {
+    #calendar tbody td {
+        width: 80px;
+        height: 64px;
+        font-size: 12px;
+    }
+    
     button {
         padding: 5px 10px;
-        font-size: 14px;
+        font-size: 12px;
     }
 
     th, td {
         padding: 5px;
+    }
+    
+    .modal-content {
+        width: 80%;
+        font-size: 14px;
+    }
+}
+
+/* Tablets og mellemstore skærme */
+@media (min-width: 601px) and (max-width: 1024px) {
+    #calendar tbody td {
+        width: 120px;
+        height: 96px;
+        font-size: 16px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+    
+    .modal-content {
+        width: 60%;
+        font-size: 16px;
+    }
+}
+
+/* Store skærme */
+@media (min-width: 1025px) {
+    #calendar tbody td {
+        width: 150px;
+        height: 120px;
+        font-size: 20px;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 20px;
+    }
+
+    th, td {
+        padding: 15px;
+    }
+    
+    .modal-content {
+        width: 40%;
+        font-size: 18px;
     }
 }
