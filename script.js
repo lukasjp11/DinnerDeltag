@@ -117,11 +117,26 @@ const dinnerDeltagApp = {
                 if (cell) {
                     cell.style.backgroundColor = 'green';
                     cell.style.color = 'white';
-                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${dateInfo.person}<br>${dateInfo.guest ? '(gæster)' : ''}</div>`;
+    
+                    const allNames = ['Lukas', 'Silas', 'Anton'];
+                    const cookName = dateInfo.person;
+                    const otherNames = allNames.filter(name => name !== cookName);
+                    const orderedNames = [cookName].concat(otherNames);
+    
+                    let namesHTML = '';
+                    orderedNames.forEach(name => {
+                        if (name === cookName) {
+                            namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
+                        } else {
+                            namesHTML += `${name}<br>`;
+                        }
+                    });
+    
+                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
                 }
             }
         });
-    },
+    },    
 
     changeMonth(direction) {
         this.currentDate.setMonth(this.currentDate.getMonth() + direction);
