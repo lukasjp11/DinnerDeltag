@@ -18,15 +18,3 @@ Du kan tilgå applikationen direkte via [GitHub Pages](https://lukasjp11.github.
 2. Klik på en dato for at vælge, hvem der deltager i middagen på den pågældende dag.
 3. Vælg en person fra dropdown-menuen, og marker boksen, hvis der deltager gæster.
 4. Klik på "Indsend" for at gemme valget. Datoen vil blive markeret på kalenderen for at indikere deltagelse.
-
-## Tilpasning
-
-Du kan tilpasse applikationen ved at redigere `styles.css` for at ændre det visuelle udseende og `script.js` for at tilføje eller modificere funktionaliteter.
-
-## Bidrag
-
-Alle er velkomne til at bidrage til projektet. Opret en pull request med dine ændringer, så gennemgår vi den og merger den ind i projektet, hvis den er passende.
-
-## Licens
-
-Dette projekt er åbent og frit tilgængeligt for alle at bruge og modificere. Du kan bruge det som du ønsker, uden restriktioner.
