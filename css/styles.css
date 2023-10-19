@@ -12,13 +12,11 @@
     --overlay-bg-color: rgba(0, 128, 0, 0.7);
 }
 
-/* Reset some default styling */
 body, h1, button {
     margin: 0;
     padding: 0;
 }
 
-/* Apply dark theme */
 body {
     background-color: var(--background-color);
     color: var(--text-color);
@@ -55,6 +53,7 @@ body {
     color: var(--text-color);
     padding: 5px;
     font-size: 14px;
+    font-weight: bold;
     line-height: 1.2;
 }
 
@@ -162,6 +161,22 @@ header {
     margin-bottom: 30px; /* Juster denne værdi efter behov */
 }
 
+
+
+#modal select {
+    background-color: var(--calendar-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#modal option {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+
 .modal-content button {
     padding: 10px 20px;
     background-color: var(--button-bg-color);
@@ -175,6 +190,11 @@ header {
 .modal-content button:hover {
     background-color: var(--button-hover-bg-color);
 }
+
+.today {
+    border: 3px solid var(--button-hover-bg-color);
+}
+
 
 /* Responsive design adjustments */
 @media (max-width: 600px) {
