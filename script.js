@@ -145,31 +145,6 @@ const dinnerDeltagApp = {
         });
     },
 
-    addSwipeListeners() {
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        const handleTouchStart = (e) => {
-            touchStartX = e.touches[0].clientX;
-        };
-
-        const handleTouchMove = (e) => {
-            touchEndX = e.touches[0].clientX;
-        };
-
-        const handleTouchEnd = () => {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                this.changeMonth(1);
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                this.changeMonth(-1);
-            }
-        };
-
-        document.addEventListener('touchstart', handleTouchStart, false);
-        document.addEventListener('touchmove', handleTouchMove, false);
-        document.addEventListener('touchend', handleTouchEnd, false);
-    }
 };
 
 dinnerDeltagApp.init();
