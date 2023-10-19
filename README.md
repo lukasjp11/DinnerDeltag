@@ -1,6 +1,6 @@
 # DinnerDeltag
 
-DinnerDeltag er en simpel webapplikation til at holde styr på, hvem der deltager i middagen hver dag i måneden. Applikationen er bygget med HTML, CSS og JavaScript og er nem at bruge og tilpasse.
+DinnerDeltag er en simpel webapplikation skabt specielt til en lejlighed i Brabrand, bestående af Lukas, Silas og Anton. Applikationen hjælper med at holde styr på, hvem der deltager i aftensmaden hver dag i måneden. Den er bygget med HTML, CSS og JavaScript, og er nem at bruge og tilpasse.
 
 ## Indhold
 
@@ -15,6 +15,10 @@ Du kan tilgå applikationen direkte via [GitHub Pages](https://lukasjp11.github.
 ## Brugervejledning
 
 1. Naviger mellem forskellige måneder ved hjælp af pilene øverst på kalenderen.
-2. Klik på en dato for at vælge, hvem der deltager i middagen på den pågældende dag.
+2. Klik på en dato for at vælge, hvem der deltager i aftensmaden på den pågældende dag.
 3. Vælg en person fra dropdown-menuen, og marker boksen, hvis der deltager gæster.
 4. Klik på "Indsend" for at gemme valget. Datoen vil blive markeret på kalenderen for at indikere deltagelse.
+
+## Note
+
+Applikationen er designet specifikt til at imødekomme behovene i vores lejlighed og indeholder derfor predefinerede navne.
