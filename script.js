@@ -30,7 +30,7 @@ const dinnerDeltagApp = {
     createCalendar() {
         const calendarBody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
         let firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
-        firstDay = (firstDay === 0) ? 6 : firstDay - 1; // Adjust Sunday to be at the end
+        firstDay = (firstDay === 0) ? 6 : firstDay - 1;
         const totalDays = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
         let dayCounter = 1;
 
