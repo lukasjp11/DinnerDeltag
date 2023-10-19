@@ -45,7 +45,7 @@ const dinnerDeltagApp = {
             '❄️ Januar', 
             '💘 Februar', 
             '🌱 Marts', 
-            '☔ April', 
+            '✝️ April', 
             '🌸 Maj', 
             '☀️ Juni', 
             '🏖️ Juli', 
