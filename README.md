@@ -15,14 +15,14 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 
 ## Brugervejledning 📚
 
-1. Naviger mellem forskellige måneder ved hjælp af pilene øverst på kalenderen ➡️⬅️.
+1. Naviger mellem forskellige måneder ved hjælp af pilene øverst på kalenderen ⬅️➡️.
 2. Klik på en dato for at vælge, hvem der deltager i aftensmaden på den pågældende dag 🗓️.
 3. Vælg en person fra dropdown-menuen, og marker boksen, hvis der deltager gæster ✅.
-4. Klik på "Indsend" for at gemme valget. Datoen vil blive markeret på kalenderen for at indikere deltagelse 🔒.
+4. Klik på "Gem" for at gemme valget. Datoen vil blive markeret på kalenderen for at indikere deltagelse 🔒.
 
-### Tilføjelse til hjemmeskærm 🏠
+### Tilføjelse til hjemmeskærm 📱
 
-#### For Android-brugere: ![Android Logo](./images/android-logo.png) 📱
+#### For Android-brugere: ![Android Logo](./images/android-logo.png)
 
 1. Åbn webbrowseren (for eksempel Chrome) på din Android-enhed 🌐.
 2. Gå til [DinnerDeltag](https://lukasjp11.github.io/DinnerDeltag/).
@@ -30,7 +30,7 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 4. Rul ned og tryk på "Tilføj til hjemmeskærm" ➕.
 5. Indtast et navn for genvejen, og tryk på "Tilføj" ✏️.
 
-#### For iOS-brugere: ![Apple Logo](./images/apple-logo.png) 📱
+#### For iOS-brugere: ![Apple Logo](./images/apple-logo.png)
 
 1. Åbn Safari-browseren på din iOS-enhed 🌐.
 2. Gå til [DinnerDeltag](https://lukasjp11.github.io/DinnerDeltag/).
