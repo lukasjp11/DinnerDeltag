@@ -1,4 +1,4 @@
-![DinnerDeltag Logo](./images/DinnerDeltag-logo.png)
+<img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" width="200"/>
 
 # DinnerDeltag 🍽️ - [Åbn App](https://lukasjp11.github.io/DinnerDeltag/)
 
