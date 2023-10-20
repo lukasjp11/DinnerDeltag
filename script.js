@@ -208,6 +208,7 @@ const dinnerDeltagApp = {
             year: this.currentDate.getFullYear(),
             person: selectedName,
             guest: isGuest,
+            firstDay: adjustedFirstDay,
             attendance: attendance,
             isCookSelected: selectedName !== 'none'
         };
