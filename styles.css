@@ -216,3 +216,10 @@ td {
     background-color: #444;
     color: #fff;
 }
+
+@media (max-width: 700px) {
+    .modal-content {
+        width: 50%;
+        max-width: 90%;
+    }
+}
