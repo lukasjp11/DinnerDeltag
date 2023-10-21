@@ -17,15 +17,15 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 ## Brugervejledning 📚
 
 1. Naviger mellem forskellige måneder ved hjælp af pilene øverst på kalenderen ⬅️➡️.
-2. Klik på en dato for at vælge, hvem der deltager i aftensmåltidet på den pågældende dag 🗓️.
-3. Maker hvem der deltager i måltidet og vælg den person fra dropdown-menuen som skal lave mad, og marker boksen, hvis der deltager gæster ✅.
+2. Klik på en dato for at vælge, hvem der deltager i aftensmaden på den pågældende dag 🗓️.
+3. Marker hvem der deltager i måltidet, og vælg fra dropdown-menuen, hvem der skal lave mad. Marker boksen, hvis der deltager gæster ✅.
 4. Klik på "Gem" for at gemme valget. Datoen vil blive farvemarkeret på kalenderen for at indikere deltagelse og hvem der laver mad 🔒.
 
 ### Farveindikatorer 🎨
 
-- **Grøn**: En kok er valgt, og der er deltagere til aftensmaden 🍲.
-- **Gul**: Der er deltagere, men ingen kok er valgt ⚠️.
-- **Rød**: Ingen deltagere eller kok er valgt 🚫.
+- **Grøn🟩**: En person er valgt til at lave mad, og der er deltagere til aftensmaden 🍲.
+- **Gul🟨**: Der er deltagere, men ingen valgt til at lave mad ⚠️.
+- **Rød🟥**: Ingen deltagere 🚫.
 
 ### Tilføjelse til hjemmeskærm 📱
 
