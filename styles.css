@@ -80,6 +80,7 @@ th, td {
 
 td {
     cursor: pointer;
+    min-width: 53px;
 }
 
 .today {
