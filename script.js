@@ -198,14 +198,14 @@ const dinnerDeltagApp = {
         document.getElementById('names').value = selectedName;
         document.getElementById('guest').checked = isGuest;
     
-        document.getElementById("modal").style.display = "block";
+        document.getElementById("modal").style.display = "flex";
     },    
     
     closeModalAndSave() {
         const selectedName = document.getElementById("names").value;
         const isGuest = document.getElementById("guest").checked;
         const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
-        const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;       // TODO: 
+        const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
 
         const lukasStatus = document.getElementById('Lukas-status').innerText === '✅';
         const silasStatus = document.getElementById('Silas-status').innerText === '✅';

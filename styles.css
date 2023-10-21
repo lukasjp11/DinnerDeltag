@@ -121,15 +121,15 @@ td {
 }
 
 .modal {
-    background-color: var(--modal-bg-color);
     display: none;
-    height: 100%;
-    left: 0;
-    overflow: auto;
     position: fixed;
     top: 0;
-    transition: opacity 0.3s ease;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: var(--modal-bg-color);
+    justify-content: center;
+    align-items: center;
     z-index: 1;
 }
 
@@ -137,13 +137,9 @@ td {
     background-color: var(--background-color);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-    left: 50%;
     padding: 40px;
-    position: fixed;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    max-width: 90%;
+    width: 70vw; /* Updated for responsiveness */
+    max-width: 500px; /* Keeps the modal from becoming too large on wider screens */
 }
 
 #attendance-list h3 {
@@ -219,7 +215,6 @@ td {
 
 @media (max-width: 700px) {
     .modal-content {
-        width: 50%;
-        max-width: 90%;
+        width: 90vw;
     }
 }
