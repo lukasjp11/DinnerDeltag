@@ -1,6 +1,6 @@
 # <img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" width="50"/> DinnerDeltag - [Åbn App](https://lukasjp11.github.io/DinnerDeltag/)
 
-DinnerDeltag er en simpel webapplikation 💻 skabt specielt til en lejlighed i Brabrand, bestående af Lukas, Silas og Anton. Applikationen hjælper med at holde styr på, hvem der deltager i aftensmaden hver dag i måneden 🍽️📅. Den er bygget med HTML, CSS og JavaScript, og er nem at bruge og tilpasse 🛠️.
+DinnerDeltag er en simpel webapplikation 💻 skabt specielt til en lejlighed i Brabrand, bestående af Lukas, Silas og Anton. Applikationen hjælper med at holde styr på, hvem der deltager i aftensmaden og hvem der laver mad hver dag i måneden 🍽️📅. Den er bygget med HTML, CSS og JavaScript, og er nem at bruge og tilpasse 🛠️.
 
 ## Indhold 📖
 
@@ -17,9 +17,15 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 ## Brugervejledning 📚
 
 1. Naviger mellem forskellige måneder ved hjælp af pilene øverst på kalenderen ⬅️➡️.
-2. Klik på en dato for at vælge, hvem der deltager i aftensmaden på den pågældende dag 🗓️.
-3. Vælg en person fra dropdown-menuen, og marker boksen, hvis der deltager gæster ✅.
-4. Klik på "Gem" for at gemme valget. Datoen vil blive markeret på kalenderen for at indikere deltagelse 🔒.
+2. Klik på en dato for at vælge, hvem der deltager i aftensmåltidet på den pågældende dag 🗓️.
+3. Maker hvem der deltager i måltidet og vælg den person fra dropdown-menuen som skal lave mad, og marker boksen, hvis der deltager gæster ✅.
+4. Klik på "Gem" for at gemme valget. Datoen vil blive farvemarkeret på kalenderen for at indikere deltagelse og hvem der laver mad 🔒.
+
+### Farveindikatorer 🎨
+
+- **Grøn**: En kok er valgt, og der er deltagere til aftensmaden 🍲.
+- **Gul**: Der er deltagere, men ingen kok er valgt ⚠️.
+- **Rød**: Ingen deltagere eller kok er valgt 🚫.
 
 ### Tilføjelse til hjemmeskærm 📱
 
