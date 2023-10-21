@@ -1,4 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js';
 import { getDatabase, ref, onValue, set } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js';
 
 const firebaseConfig = {
@@ -11,9 +12,9 @@ const firebaseConfig = {
     databaseURL: "https://dinnerdeltag-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app); 
+const auth = getAuth();
 
 const dinnerDeltagApp = {
     currentDate: new Date(),
@@ -257,8 +258,20 @@ const dinnerDeltagApp = {
 
 };
 
-window.addEventListener('DOMContentLoaded', () => {
-    dinnerDeltagApp.init();
+window.addEventListener('DOMContentLoaded', (event) => {
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            dinnerDeltagApp.init();
+        } else {
+            signInAnonymously(auth)
+                .then(() => {
+                    dinnerDeltagApp.init();
+                })
+                .catch((error) => {
+                    console.error('Error during sign in:', error);
+                });
+        }
+    });
 });
 
 window.changeMonth = dinnerDeltagApp.changeMonth.bind(dinnerDeltagApp);
