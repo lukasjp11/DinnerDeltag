@@ -23,9 +23,9 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 
 ### Farveindikatorer 🎨
 
-- **Grøn🟩**: En person er valgt til at lave mad, og der er deltagere til aftensmaden 🍲.
-- **Gul🟨**: Der er deltagere, men ingen valgt til at lave mad ⚠️.
-- **Rød🟥**: Ingen deltagere 🚫.
+- **🟩Grøn**: En person er valgt til at lave mad, og der er deltagere til aftensmaden 🍲.
+- **🟨Gul**: Der er deltagere, men ingen valgt til at lave mad ⚠️.
+- **🟥Rød**: Ingen deltagere 🚫.
 
 ### Tilføjelse til hjemmeskærm 📱
 
