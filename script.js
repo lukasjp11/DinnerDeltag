@@ -256,7 +256,7 @@ const dinnerDeltagApp = {
 
 };
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
     dinnerDeltagApp.init();
 });
 
