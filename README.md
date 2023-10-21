@@ -31,7 +31,7 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 
 ### Tilføj genvej til din hjemmeskærm 📱
 
-#### ![Android Logo](./images/android-logo.png) For Android-brugere: 
+#### For Android-brugere: ![Android Logo](./images/android-logo.png)
 
 1. Åbn webbrowseren (for eksempel Chrome) på din Android-enhed 🌐.
 2. Gå til [DinnerDeltag](https://lukasjp11.github.io/DinnerDeltag/).
@@ -39,7 +39,7 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 4. Rul ned og tryk på "Tilføj til hjemmeskærm" ➕.
 5. Indtast et navn for genvejen, og tryk på "Tilføj" ✏️.
 
-#### ![Apple Logo](./images/apple-logo.png) For iOS-brugere: 
+#### For iOS-brugere: ![Apple Logo](./images/apple-logo.png)
 
 1. Åbn Safari-browseren på din iOS-enhed 🌐.
 2. Gå til [DinnerDeltag](https://lukasjp11.github.io/DinnerDeltag/).
