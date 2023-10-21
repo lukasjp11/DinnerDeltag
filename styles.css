@@ -21,23 +21,22 @@ body {
     color: var(--text-color);
 }
 
-header,
-#right-section,
-#navButtons {
+header {
     display: flex;
     align-items: center;
-}
-
-header {
-    justify-content: space-between;
     margin-bottom: 20px;
     position: relative;
 }
 
-#right-section {
+#monthName {
+    margin-left: 10px;
+}
+
+#navButtons {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #navButtons button {

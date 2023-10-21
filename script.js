@@ -43,18 +43,18 @@ const dinnerDeltagApp = {
     setMonthName() {
         const monthName = document.getElementById('monthName');
         const monthNames = [
-            '❄️ Januar', 
-            '💘 Februar', 
-            '🌱 Marts', 
-            '✝️ April', 
-            '🌸 Maj', 
-            '☀️ Juni', 
-            '🏖️ Juli', 
-            '🌻 August', 
-            '🍂 September', 
-            '🎃 Oktober', 
-            '🍁 November', 
-            '🎄 December'
+            'Januar', 
+            'Februar', 
+            'Marts', 
+            'April', 
+            'Maj', 
+            'Juni', 
+            'Juli', 
+            'August', 
+            'September', 
+            'Oktober', 
+            'November', 
+            'December'
         ];
         monthName.innerText = `${monthNames[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
     },
@@ -114,20 +114,22 @@ const dinnerDeltagApp = {
         document.querySelectorAll('#calendar tbody td').forEach(cell => {
             cell.style.backgroundColor = '';
         });
-
+    
         this.selectedDates.forEach(dateInfo => {
             if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
                 const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
-                
+    
+                const noOneAttending = !Object.values(dateInfo.attendance).some(attending => attending);
+    
                 if (cell) {
-                    cell.style.backgroundColor = dateInfo.isCookSelected ? 'green' : '#DAA520';
+                    cell.style.backgroundColor = noOneAttending ? 'red' : dateInfo.isCookSelected ? 'green' : '#DAA520';
                     cell.style.color = 'white';
     
                     const allNames = ['Lukas', 'Silas', 'Anton'];
                     const cookName = dateInfo.person;
                     const otherNames = allNames.filter(name => name !== cookName);
                     const orderedNames = [cookName].concat(otherNames);
-                    
+    
                     let namesHTML = '';
                     orderedNames.forEach(name => {
                         if (name === cookName && cookName !== 'none') {
@@ -154,7 +156,16 @@ const dinnerDeltagApp = {
         } else {
             statusElement.textContent = '✅';
         }
-    },
+    
+        const allStatuses = [
+            document.getElementById('Lukas-status').textContent,
+            document.getElementById('Silas-status').textContent,
+            document.getElementById('Anton-status').textContent
+        ];
+    
+        const isAnyoneAttending = allStatuses.includes('✅');
+        document.getElementById('names').disabled = !isAnyoneAttending;
+    },    
 
     openModal() {
         let lukasStatus = '✅';
@@ -180,6 +191,9 @@ const dinnerDeltagApp = {
         document.getElementById('Lukas-status').innerText = lukasStatus;
         document.getElementById('Silas-status').innerText = silasStatus;
         document.getElementById('Anton-status').innerText = antonStatus;
+
+        const isAnyoneAttending = [lukasStatus, silasStatus, antonStatus].includes('✅');
+        document.getElementById('names').disabled = !isAnyoneAttending;
     
         document.getElementById('names').value = selectedName;
         document.getElementById('guest').checked = isGuest;
