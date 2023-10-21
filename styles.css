@@ -123,13 +123,13 @@ td {
 .modal {
     background-color: var(--modal-bg-color);
     display: none;
-    height: 100%;
     left: 0;
     overflow: auto;
     position: fixed;
     top: 0;
     transition: opacity 0.3s ease;
     width: 100%;
+    height: 100%;
     z-index: 1;
 }
 
@@ -218,9 +218,18 @@ td {
 }
 
 @media (max-width: 700px) {
+
     .modal-content {
-        width: 50%;
-        max-width: 90%;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+        padding: 20px;
+        box-sizing: border-box;
+        margin: 0;
+        border: none;
+        border-radius: 0%;
     }
 
     #navButtons {
