@@ -64,6 +64,7 @@ button:hover, .modal-content button:hover {
     border-radius: 10px;
     margin: auto;
     max-width: 800px;
+    min-width: 530px;
     padding: 20px;
 }
 
