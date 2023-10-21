@@ -27,7 +27,7 @@ Applikationen bruger Firebase som dens database for at lagre og hente data i rea
 - **🟨Gul**: Der er deltagere, men ingen valgt til at lave mad ⚠️.
 - **🟥Rød**: Ingen deltagere 🚫.
 
-### Tilføjelse til hjemmeskærm 📱
+### Tilføj genvej til din hjemmeskærm 📱
 
 #### For Android-brugere: ![Android Logo](./images/android-logo.png)
 
