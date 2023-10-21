@@ -198,7 +198,7 @@ const dinnerDeltagApp = {
         document.getElementById('names').value = selectedName;
         document.getElementById('guest').checked = isGuest;
     
-        document.getElementById("modal").style.display = "block";
+        document.getElementById("modal").style.display = "flex";
     },    
     
     closeModalAndSave() {
