@@ -222,4 +222,12 @@ td {
         width: 50%;
         max-width: 90%;
     }
+
+    #navButtons {
+        position: fixed;
+        top: 50px;
+        right: 20px;
+        transform: translateY(-50%);
+    }
 }
+
