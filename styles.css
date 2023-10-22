@@ -84,7 +84,7 @@ td {
 }
 
 .today {
-    border: 3px solid var(--button-hover-bg-color);
+    border: 3px solid var(--background-color);
 }
 
 .grayed-out {
@@ -238,7 +238,6 @@ td {
         transform: translateY(-50%);
     }
 }
-
 
 footer {
     margin-top: 20px;
