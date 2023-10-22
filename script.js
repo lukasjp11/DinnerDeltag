@@ -89,10 +89,8 @@ const dinnerDeltagApp = {
                     cell.innerText = dayCounter;
                     dayCounter++;
                 }
-
                 row.appendChild(cell);
             }
-
             calendarBody.appendChild(row);
         }
     },
@@ -111,14 +109,9 @@ const dinnerDeltagApp = {
     },
 
     highlightSelectedDates() {
-        document.querySelectorAll('#calendar tbody td').forEach(cell => {
-            cell.style.backgroundColor = '';
-        });
-    
         this.selectedDates.forEach(dateInfo => {
             if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
                 const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
-    
                 const noOneAttending = !Object.values(dateInfo.attendance).some(attending => attending);
     
                 if (cell) {
@@ -227,7 +220,7 @@ const dinnerDeltagApp = {
             attendance: attendance,
             isCookSelected: selectedName !== 'none'
         };
-
+        
         this.selectedDates = this.selectedDates.filter(dateInfo => 
             dateInfo.date !== this.clickedDate || 
             dateInfo.month !== this.currentDate.getMonth() || 
@@ -251,7 +244,6 @@ const dinnerDeltagApp = {
               dateInfo.month === this.currentDate.getMonth() && 
               dateInfo.year === this.currentDate.getFullYear())
         );
-
         const dbRef = ref(db, 'selectedDates/');
         set(dbRef, this.selectedDates);
 
