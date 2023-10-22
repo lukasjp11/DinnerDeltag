@@ -239,17 +239,20 @@ const dinnerDeltagApp = {
     },
 
     clearSelectedDate() {
-        this.selectedDates = this.selectedDates.filter(dateInfo => 
-            !(dateInfo.date === this.clickedDate && 
-              dateInfo.month === this.currentDate.getMonth() && 
-              dateInfo.year === this.currentDate.getFullYear())
-        );
-        const dbRef = ref(db, 'selectedDates/');
-        set(dbRef, this.selectedDates);
-
-        this.updateCalendar();
-        document.getElementById("modal").style.display = "none";
-    },
+        const userConfirmed = confirm("Er du sikker på, at du vil rydde de valgte data?");
+        if (userConfirmed) {
+            this.selectedDates = this.selectedDates.filter(dateInfo => 
+                !(dateInfo.date === this.clickedDate && 
+                dateInfo.month === this.currentDate.getMonth() && 
+                dateInfo.year === this.currentDate.getFullYear())
+            );
+            const dbRef = ref(db, 'selectedDates/');
+            set(dbRef, this.selectedDates);
+    
+            this.updateCalendar();
+            document.getElementById("modal").style.display = "none";
+        }
+    },    
 
     attachClickEventToCells() {
         document.querySelectorAll('#calendar tbody td').forEach(cell => {
