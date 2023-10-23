@@ -6,38 +6,49 @@ class Modal {
     }
 
     openModal = () => {
-        let lukasStatus = '✅';
-        let silasStatus = '✅';
-        let antonStatus = '✅';
-        let selectedName = 'none';
-        let isGuest = false;
-
-        const existingDateInfo = this.calendar.selectedDates.find(dateInfo =>
+        const existingDateInfo = this.getExistingDateInfo();
+        const { lukasStatus, silasStatus, antonStatus, selectedName, isGuest } = this.getStatusAndNames(existingDateInfo);
+    
+        this.setModalElements(lukasStatus, silasStatus, antonStatus, selectedName, isGuest);
+        document.getElementById("modal").style.display = "block";
+    }
+    
+    getExistingDateInfo = () => {
+        return this.calendar.selectedDates.find(dateInfo =>
             dateInfo.date === this.calendar.clickedDate &&
             dateInfo.month === this.calendar.currentDate.getMonth() &&
             dateInfo.year === this.calendar.currentDate.getFullYear());
-
+    }
+    
+    getStatusAndNames = (existingDateInfo) => {
+        let statuses = {    lukasStatus: '✅', 
+                            silasStatus: '✅', 
+                            antonStatus: '✅', 
+                            selectedName: 'none', 
+                            isGuest: false 
+                        };
+    
         if (existingDateInfo) {
-            lukasStatus = existingDateInfo.attendance.Lukas ? '✅' : '❌';
-            silasStatus = existingDateInfo.attendance.Silas ? '✅' : '❌';
-            antonStatus = existingDateInfo.attendance.Anton ? '✅' : '❌';
-
-            selectedName = existingDateInfo.person;
-            isGuest = existingDateInfo.guest;
+            statuses.lukasStatus = existingDateInfo.attendance.Lukas ? '✅' : '❌';
+            statuses.silasStatus = existingDateInfo.attendance.Silas ? '✅' : '❌';
+            statuses.antonStatus = existingDateInfo.attendance.Anton ? '✅' : '❌';
+            statuses.selectedName = existingDateInfo.person;
+            statuses.isGuest = existingDateInfo.guest;
         }
-
+        return statuses;
+    }
+    
+    setModalElements = (lukasStatus, silasStatus, antonStatus, selectedName, isGuest) => {
         document.getElementById('Lukas-status').innerText = lukasStatus;
         document.getElementById('Silas-status').innerText = silasStatus;
         document.getElementById('Anton-status').innerText = antonStatus;
-
+    
         const isAnyoneAttending = [lukasStatus, silasStatus, antonStatus].includes('✅');
         document.getElementById('names').disabled = !isAnyoneAttending;
-
+    
         document.getElementById('names').value = selectedName;
         document.getElementById('guest').checked = isGuest;
-
-        document.getElementById("modal").style.display = "block";
-    }
+    }    
 
     closeModalAndSave = () => {
         const selectedName = document.getElementById("names").value;
