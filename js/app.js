@@ -1,4 +1,4 @@
-import { onAuthStateChanged, signInAnonymously, auth } from './firebase.js';
+import { onAuthStateChanged, signInAnonymously, auth } from './firebaseInit.js';
 import Calendar from './calendar.js';
 import Modal from './modal.js';
 
