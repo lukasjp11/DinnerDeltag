@@ -1,4 +1,4 @@
-import { db, ref, onValue, set } from './firebase.js';
+import { db, ref, onValue, } from './firebase.js';
 import Modal from './modal.js';
 
 class Calendar {
@@ -7,19 +7,9 @@ class Calendar {
         this.selectedDates = [];
         this.clickedDate = null;
         this.modal = new Modal(this);
-
-        this.init = this.init.bind(this);
-        this.updateCalendar = this.updateCalendar.bind(this);
-        this.setMonthName = this.setMonthName.bind(this);
-        this.clearPreviousCalendar = this.clearPreviousCalendar.bind(this);
-        this.createCalendar = this.createCalendar.bind(this);
-        this.highlightToday = this.highlightToday.bind(this);
-        this.highlightSelectedDates = this.highlightSelectedDates.bind(this);
-        this.attachClickEventToCells = this.attachClickEventToCells.bind(this);
-        this.changeMonth = this.changeMonth.bind(this);
     }
 
-    init() {
+    init = () => {
         const dbRef = ref(db, 'selectedDates/');
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
@@ -29,7 +19,7 @@ class Calendar {
         });
     }
 
-    updateCalendar() {
+    updateCalendar = () => {
         this.setMonthName();
         this.clearPreviousCalendar();
         this.createCalendar();
@@ -38,7 +28,7 @@ class Calendar {
         this.attachClickEventToCells();
     }
 
-    setMonthName() {
+    setMonthName = () => {
         const monthName = document.getElementById('monthName');
         const monthNames = [
             'Januar', 
@@ -57,12 +47,12 @@ class Calendar {
         monthName.innerText = `${monthNames[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
     }
 
-    clearPreviousCalendar() {
+    clearPreviousCalendar = () => {
         const calendarBody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
         calendarBody.innerHTML = '';
     }
 
-    createCalendar() {
+    createCalendar = () => {
         const calendarBody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
         let firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
         firstDay = (firstDay === 0) ? 6 : firstDay - 1;
@@ -93,7 +83,7 @@ class Calendar {
         }
     }
 
-    highlightToday() {
+    highlightToday = () => {
         const today = new Date();
         if (today.getMonth() === this.currentDate.getMonth() && today.getFullYear() === this.currentDate.getFullYear()) {
             const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
@@ -106,7 +96,7 @@ class Calendar {
         }
     }
 
-    highlightSelectedDates() {
+    highlightSelectedDates = () => {
         this.selectedDates.forEach(dateInfo => {
             if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
                 const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
@@ -135,7 +125,7 @@ class Calendar {
         });
     }
 
-    attachClickEventToCells() {
+    attachClickEventToCells = () => {
         document.querySelectorAll('#calendar tbody td').forEach(cell => {
             cell.addEventListener('click', () => {
                 if (!cell.classList.contains('grayed-out')) {
@@ -146,7 +136,7 @@ class Calendar {
         });
     }
 
-    changeMonth(direction) {
+    changeMonth = (direction) => {
         this.currentDate.setMonth(this.currentDate.getMonth() + direction);
         this.updateCalendar();
     }

@@ -3,15 +3,9 @@ import { db, ref, set } from './firebase.js';
 class Modal {
     constructor(calendar) {
         this.calendar = calendar;
-
-        this.openModal = this.openModal.bind(this);
-        this.closeModalAndSave = this.closeModalAndSave.bind(this);
-        this.closeModalWithoutSaving = this.closeModalWithoutSaving.bind(this);
-        this.clearSelectedDate = this.clearSelectedDate.bind(this);
-        this.toggleAttendance = this.toggleAttendance.bind(this);
     }
 
-    openModal() {
+    openModal = () => {
         let lukasStatus = '✅';
         let silasStatus = '✅';
         let antonStatus = '✅';
@@ -45,7 +39,7 @@ class Modal {
         document.getElementById("modal").style.display = "block";
     }
 
-    closeModalAndSave() {
+    closeModalAndSave = () => {
         const selectedName = document.getElementById("names").value;
         const isGuest = document.getElementById("guest").checked;
         const firstDay = new Date(this.calendar.currentDate.getFullYear(), this.calendar.currentDate.getMonth(), 1).getDay();
@@ -85,11 +79,11 @@ class Modal {
         document.getElementById("modal").style.display = "none";
     }
 
-    closeModalWithoutSaving() {
+    closeModalWithoutSaving = () => {
         document.getElementById("modal").style.display = "none";
     }
 
-    clearSelectedDate() {
+    clearSelectedDate = () => {
         const userConfirmed = confirm("Er du sikker på, at du vil rydde de valgte data?");
         if (userConfirmed) {
             this.calendar.selectedDates = this.calendar.selectedDates.filter(dateInfo => 
@@ -105,7 +99,7 @@ class Modal {
         }
     }    
 
-    toggleAttendance(name) {
+    toggleAttendance = (name) => {
         const statusElement = document.getElementById(`${name}-status`);
         if (statusElement.textContent === '✅') {
             statusElement.textContent = '❌';
