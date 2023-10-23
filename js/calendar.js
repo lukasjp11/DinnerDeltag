@@ -98,31 +98,49 @@ class Calendar {
 
     highlightSelectedDates = () => {
         this.selectedDates.forEach(dateInfo => {
-            if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
-                const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
-                const noOneAttending = !Object.values(dateInfo.attendance).some(attending => attending);
-
-                if (cell) {
-                    cell.style.backgroundColor = noOneAttending ? 'red' : dateInfo.isCookSelected ? 'green' : '#DAA520';
-                    cell.style.color = 'white';
-
-                    const allNames = ['Lukas', 'Silas', 'Anton'];
-                    const cookName = dateInfo.person;
-                    const otherNames = allNames.filter(name => name !== cookName);
-                    const orderedNames = [cookName].concat(otherNames);
-
-                    let namesHTML = '';
-                    orderedNames.forEach(name => {
-                        if (name === cookName && cookName !== 'none') {
-                            namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
-                        } else if (name !== 'none') {
-                            namesHTML += `${name} ${dateInfo.attendance[name] ? '✅' : '❌'}<br>`;
-                        }
-                    });
-                    cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
-                }
+            if (this.isDateInCurrentMonth(dateInfo)) {
+                this.updateCell(dateInfo);
             }
         });
+    }
+    
+    isDateInCurrentMonth = (dateInfo) => {
+        const currentYear = this.currentDate.getFullYear();
+        const currentMonth = this.currentDate.getMonth();
+        return dateInfo.year === currentYear && dateInfo.month === currentMonth;
+    }
+    
+    updateCell = (dateInfo) => {
+        const cell = this.getCellForDate(dateInfo);
+        if (!cell) return;
+    
+        const noOneAttending = !Object.values(dateInfo.attendance).some(attending => attending);
+        cell.style.backgroundColor = noOneAttending ? 'red' : dateInfo.isCookSelected ? 'green' : '#DAA520';
+        cell.style.color = 'white';
+    
+        const namesHTML = this.generateNamesHTML(dateInfo);
+        cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
+    }
+    
+    getCellForDate = (dateInfo) => {
+        return document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
+    }
+    
+    generateNamesHTML = (dateInfo) => {
+        const allNames = ['Lukas', 'Silas', 'Anton'];
+        const cookName = dateInfo.person;
+        const otherNames = allNames.filter(name => name !== cookName);
+        const orderedNames = [cookName].concat(otherNames);
+    
+        let namesHTML = '';
+        orderedNames.forEach(name => {
+            if (name === cookName && cookName !== 'none') {
+                namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
+            } else if (name !== 'none') {
+                namesHTML += `${name} ${dateInfo.attendance[name] ? '✅' : '❌'}<br>`;
+            }
+        });
+        return namesHTML;
     }
 
     attachClickEventToCells = () => {
