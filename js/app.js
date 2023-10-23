@@ -11,18 +11,24 @@ window.closeModalAndSave = modal.closeModalAndSave.bind(modal);
 window.clearSelectedDate = modal.clearSelectedDate.bind(modal);
 window.toggleAttendance = modal.toggleAttendance.bind(modal);
 
+function initializeCalendar() {
+    calendar.init();
+}
+
+function handleAuthStateChange(user) {
+    if (user) {
+        initializeCalendar();
+    } else {
+        signInAnonymously(auth)
+            .then(initializeCalendar)
+            .catch(handleSignInError);
+    }
+}
+
+function handleSignInError(error) {
+    console.error('Error during sign in:', error);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            calendar.init();
-        } else {
-            signInAnonymously(auth)
-                .then(() => {
-                    calendar.init();
-                })
-                .catch((error) => {
-                    console.error('Error during sign in:', error);
-                });
-        }
-    });
+    onAuthStateChanged(auth, handleAuthStateChange);
 });
