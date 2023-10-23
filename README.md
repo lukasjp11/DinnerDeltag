@@ -16,8 +16,13 @@ DinnerDeltag er en simpel webapplikation 💻 skabt specielt til en lejlighed i 
 ## Indhold 📖 <a name="indhold"></a>
 
 - `index.html`: Hovedfilen der indeholder strukturen af webapplikationen 🏗️.
-- `styles.css`: Styling til webapplikationen for at gøre den visuelt tiltalende 🎨.
-- `script.js`: JavaScript-fil til at håndtere interaktion og dynamisk indhold ⚙️.
+- `css/calendarStyles.css`: CSS fil der indeholder styling specifikt til kalenderdelen af webapplikationen 📅.
+- `css/modalStyles.css`: CSS fil der indeholder styling specifikt til modal-vinduet i applikationen 🪟.
+- `js/app.js`: Hoved JavaScript-fil der initialiserer og styrer webapplikationen ⚙️.
+- `js/calendar.js`: JavaScript-fil til at håndtere kalenderens funktionalitet og interaktion 📆.
+- `js/modal.js`: JavaScript-fil til at styre modal-vinduets funktionalitet og interaktion 🖱️.
+- `js/firebaseInit.js`: Initialiserer og konfigurerer forbindelsen til Firebase for realtids datahåndtering 🔥.
+- `images/`: En mappe der indeholder alle billederne brugt i webapplikationen 🖼️.
 
 ## Adgang 🚪 <a name="adgang"></a>
 
