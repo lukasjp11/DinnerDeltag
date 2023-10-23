@@ -58,30 +58,41 @@ class Calendar {
         firstDay = (firstDay === 0) ? 6 : firstDay - 1;
         const totalDays = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
         let dayCounter = 1;
-
+    
         for (let i = 0; i < 6; i++) {
             const row = document.createElement('tr');
-
-            for (let j = 0; j < 7; j++) {
-                const cell = document.createElement('td');
-
-                if (i === 0 && j < firstDay) {
-                    const prevMonthLastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 0).getDate();
-                    cell.innerText = prevMonthLastDay - firstDay + j + 1;
-                    cell.classList.add('grayed-out');
-                } else if (dayCounter > totalDays) {
-                    cell.innerText = dayCounter - totalDays;
-                    cell.classList.add('grayed-out');
-                    dayCounter++;
-                } else {
-                    cell.innerText = dayCounter;
-                    dayCounter++;
-                }
-                row.appendChild(cell);
-            }
+            dayCounter = this.fillCells(row, i, firstDay, totalDays, dayCounter);
             calendarBody.appendChild(row);
         }
     }
+    
+    fillCells = (row, weekIndex, firstDay, totalDays, dayCounter) => {
+        for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
+            const cell = document.createElement('td');
+    
+            if (weekIndex === 0 && dayIndex < firstDay) {
+                this.fillGrayedOutDays(cell, dayIndex, true, firstDay);
+            } else if (dayCounter > totalDays) {
+                this.fillGrayedOutDays(cell, dayCounter - totalDays, false);
+                dayCounter++;
+            } else {
+                cell.innerText = dayCounter;
+                dayCounter++;
+            }
+            row.appendChild(cell);
+        }
+        return dayCounter;
+    }    
+    
+    fillGrayedOutDays = (cell, dayNum, isPrevMonth, firstDay) => {
+        if (isPrevMonth) {
+            const prevMonthLastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 0).getDate();
+            cell.innerText = prevMonthLastDay - firstDay + dayNum + 1;
+        } else {
+            cell.innerText = dayNum;
+        }
+        cell.classList.add('grayed-out');
+    }    
 
     highlightToday = () => {
         const today = new Date();
