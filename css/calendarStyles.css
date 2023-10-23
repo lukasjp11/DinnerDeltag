@@ -1,0 +1,133 @@
+:root {
+    --background-color: #333;
+    --border-color: #555;
+    --button-bg-color: #555;
+    --button-hover-bg-color: #666;
+    --calendar-bg-color: #444;
+    --grayed-out-color: #888;
+    --text-color: white;
+    --dark-yellow: #d1a800;
+}
+
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#monthName {
+    margin-left: 10px;
+}
+
+#navButtons {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+button {
+    background-color: var(--button-bg-color);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+#calendar-container {
+    background-color: var(--calendar-bg-color);
+    border-radius: 10px;
+    margin: auto;
+    max-width: 800px;
+    min-width: 530px;
+    padding: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    cursor: pointer;
+    min-width: 53px;
+}
+
+.today {
+    border: 3px solid var(--background-color);
+}
+
+.grayed-out {
+    color: var(--grayed-out-color);
+    opacity: 0.5;
+}
+
+#calendar tbody td {
+    font-size: 16px;
+    height: 80px;
+    position: relative;
+    vertical-align: top;
+    width: 100px;
+}
+
+#calendar tbody td strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#calendar tbody td div {
+    bottom: 0;
+    color: var(--text-color);
+    font-size: 13px;
+    max-width: 90px;
+    overflow: hidden;
+    margin: auto;
+    left: 0;
+    line-height: 1.2;
+    padding: 5px;
+    position: absolute;
+    right: 0;
+    word-break: break-word;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+}
+
+footer a {
+    color: var(--dark-yellow);
+}
+
+footer a:hover {
+    color: white;
+}

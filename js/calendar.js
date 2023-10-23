@@ -1,4 +1,4 @@
-import { db, ref, onValue, } from './firebase.js';
+import { db, ref, onValue, } from './firebaseInit.js';
 import Modal from './modal.js';
 
 class Calendar {
@@ -31,17 +31,17 @@ class Calendar {
     setMonthName = () => {
         const monthName = document.getElementById('monthName');
         const monthNames = [
-            'Januar', 
-            'Februar', 
-            'Marts', 
-            'April', 
-            'Maj', 
-            'Juni', 
-            'Juli', 
-            'August', 
-            'September', 
-            'Oktober', 
-            'November', 
+            'Januar',
+            'Februar',
+            'Marts',
+            'April',
+            'Maj',
+            'Juni',
+            'Juli',
+            'August',
+            'September',
+            'Oktober',
+            'November',
             'December'
         ];
         monthName.innerText = `${monthNames[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
@@ -89,7 +89,7 @@ class Calendar {
             const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1).getDay();
             const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
             const todayCell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((today.getDate() + adjustedFirstDay) / 7)}) td:nth-child(${(today.getDate() + adjustedFirstDay - 1) % 7 + 1})`);
-            
+
             if (todayCell) {
                 todayCell.classList.add('today');
             }
@@ -101,16 +101,16 @@ class Calendar {
             if (dateInfo.year === this.currentDate.getFullYear() && dateInfo.month === this.currentDate.getMonth()) {
                 const cell = document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
                 const noOneAttending = !Object.values(dateInfo.attendance).some(attending => attending);
-    
+
                 if (cell) {
                     cell.style.backgroundColor = noOneAttending ? 'red' : dateInfo.isCookSelected ? 'green' : '#DAA520';
                     cell.style.color = 'white';
-    
+
                     const allNames = ['Lukas', 'Silas', 'Anton'];
                     const cookName = dateInfo.person;
                     const otherNames = allNames.filter(name => name !== cookName);
                     const orderedNames = [cookName].concat(otherNames);
-    
+
                     let namesHTML = '';
                     orderedNames.forEach(name => {
                         if (name === cookName && cookName !== 'none') {
