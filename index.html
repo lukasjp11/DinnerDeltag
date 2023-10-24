@@ -6,20 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DinnerDeltag</title>
     <link rel="icon" href="./images/DinnerDeltag-logo.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" type="module" defer></script>
+    <link rel="stylesheet" href="css/calendarStyles.css">
+    <link rel="stylesheet" href="css/modalStyles.css">
+    <script src="js/app.js" type="module" defer></script>
 </head>
 
 <body>
     <div id="calendar-container">
         <header>
+            <img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" width="60">
             <h1 id="monthName"></h1>
-            <div id="right-section">
-                <div id="navButtons">
-                    <button id="prevMonth" onclick="changeMonth(-1)">&#10094;</button>
-                    <button id="nextMonth" onclick="changeMonth(1)">&#10095;</button>
-                </div>
-                <img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" width="50">
+            <div id="navButtons">
+                <button id="prevMonth" onclick="changeMonth(-1)">&#10094;</button>
+                <button id="nextMonth" onclick="changeMonth(1)">&#10095;</button>
             </div>
         </header>
         <table id="calendar">
@@ -35,16 +34,15 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Calendar days will be injected here by JavaScript -->
+                <!-- Kalender vil blive indsat her af JavaScript -->
             </tbody>
         </table>
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModalWithoutSaving()">&times;</span>
-            <h2>Vælg person</h2>
+            <h2>Deltagerinformation</h2>
             <br><br>
-    
             <div id="attendance-list">
                 <h3>Deltagelse:</h3>
                 <div id="Lukas-attendance">
@@ -60,7 +58,6 @@
                     <span id="Anton-status" onclick="toggleAttendance('Anton')">✅</span>
                 </div>
             </div>
-    
             <label for="names">Hvem laver mad?</label>
             <select id="names">
                 <option value="none">Ingen</option>
@@ -75,6 +72,9 @@
             <button onclick="clearSelectedDate()">Ryd</button>
         </div>
     </div>
+    <footer>
+        <p>Find koden og introduktion til brug på <a href="https://github.com/lukasjp11/DinnerDeltag" target="_blank">GitHub</a>.</p>
+    </footer>     
 </body>
 
 </html>
