@@ -131,3 +131,13 @@ footer a {
 footer a:hover {
     color: white;
 }
+
+
+@media (max-width: 700px) {
+    #navButtons {
+        position: fixed;
+        right: 20px;
+        top: 50px;
+        z-index: 1000;
+    }
+}
