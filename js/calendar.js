@@ -11,11 +11,13 @@ class Calendar {
 
     init = () => {
         const dbRef = ref(db, 'selectedDates/');
+        loader.style.display = 'block';
         onValue(dbRef, (snapshot) => {
             const data = snapshot.val();
             console.log('Data retrieved from Firebase:', data);
             this.selectedDates = data ? data : [];
             this.updateCalendar();
+            loader.style.display = 'none';
         });
     }
 
