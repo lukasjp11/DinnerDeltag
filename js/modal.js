@@ -21,12 +21,13 @@ class Modal {
     }
     
     getStatusAndNames = (existingDateInfo) => {
-        let statuses = {    lukasStatus: '✅', 
-                            silasStatus: '✅', 
-                            antonStatus: '✅', 
-                            selectedName: 'none', 
-                            isGuest: false 
-                        };
+        let statuses = {    
+            lukasStatus: '✅', 
+            silasStatus: '✅', 
+            antonStatus: '✅', 
+            selectedName: 'none', 
+            isGuest: false 
+        };
     
         if (existingDateInfo) {
             statuses.lukasStatus = existingDateInfo.attendance.Lukas ? '✅' : '❌';
