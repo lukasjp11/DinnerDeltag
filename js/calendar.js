@@ -168,7 +168,11 @@ class Calendar {
     }
 
     changeMonth = (direction) => {
+        const originalDate = this.currentDate.getDate();
+        this.currentDate.setDate(1);
         this.currentDate.setMonth(this.currentDate.getMonth() + direction);
+        const maxDayInNewMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
+        this.currentDate.setDate(Math.min(originalDate, maxDayInNewMonth));
         this.updateCalendar();
     }
 }
