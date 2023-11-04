@@ -68,4 +68,4 @@ Nu vil en genvej til DinnerDeltag-webapplikationen være tilgængelig på din en
 
 ## Note 📌 <a name="note"></a>
 
-Applikationen er designet specifikt til at imødekomme behovene i vores lejlighed og indeholder derfor predefinerede navne. 😊
+Applikationen er designet specifikt til at imødekomme behovene i vores lejlighed og indeholder derfor hardkodede, predefinerede navne. 😊
