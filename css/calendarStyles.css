@@ -27,6 +27,10 @@ header {
     position: relative;
 }
 
+.logo {
+    width: 60px;
+}
+
 #monthName {
     margin-left: 10px;
 }
@@ -131,7 +135,6 @@ footer a {
 footer a:hover {
     color: white;
 }
-
 
 .loader {
     border: 8px solid #f3f3f3;
