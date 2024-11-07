@@ -139,7 +139,7 @@ class Calendar {
     }
     
     generateNamesHTML = (dateInfo) => {
-        const allNames = ['Lukas', 'Silas', 'Anton'];
+        const allNames = ['Tang', 'Hardonk', 'Sine'];
         const cookName = dateInfo.person;
         const otherNames = allNames.filter(name => name !== cookName);
         const orderedNames = [cookName].concat(otherNames);

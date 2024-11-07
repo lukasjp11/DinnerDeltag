@@ -7,9 +7,9 @@ class Modal {
 
     openModal = () => {
         const existingDateInfo = this.getExistingDateInfo();
-        const { lukasStatus, silasStatus, antonStatus, selectedName, isGuest } = this.getStatusAndNames(existingDateInfo);
+        const { tangStatus, hardonkStatus, sineStatus, selectedName, isGuest } = this.getStatusAndNames(existingDateInfo);
     
-        this.setModalElements(lukasStatus, silasStatus, antonStatus, selectedName, isGuest);
+        this.setModalElements(tangStatus, hardonkStatus, sineStatus, selectedName, isGuest);
         document.getElementById("modal").style.display = "block";
     }
     
@@ -22,29 +22,29 @@ class Modal {
     
     getStatusAndNames = (existingDateInfo) => {
         let statuses = {    
-            lukasStatus: '✅', 
-            silasStatus: '✅', 
-            antonStatus: '✅', 
+            tangStatus: '✅', 
+            hardonkStatus: '✅', 
+            sineStatus: '✅', 
             selectedName: 'none', 
             isGuest: false 
         };
     
         if (existingDateInfo) {
-            statuses.lukasStatus = existingDateInfo.attendance.Lukas ? '✅' : '❌';
-            statuses.silasStatus = existingDateInfo.attendance.Silas ? '✅' : '❌';
-            statuses.antonStatus = existingDateInfo.attendance.Anton ? '✅' : '❌';
+            statuses.tangStatus = existingDateInfo.attendance.Tang ? '✅' : '❌';
+            statuses.hardonkStatus = existingDateInfo.attendance.Hardonk ? '✅' : '❌';
+            statuses.sineStatus = existingDateInfo.attendance.Sine ? '✅' : '❌';
             statuses.selectedName = existingDateInfo.person;
             statuses.isGuest = existingDateInfo.guest;
         }
         return statuses;
     }
     
-    setModalElements = (lukasStatus, silasStatus, antonStatus, selectedName, isGuest) => {
-        document.getElementById('Lukas-status').innerText = lukasStatus;
-        document.getElementById('Silas-status').innerText = silasStatus;
-        document.getElementById('Anton-status').innerText = antonStatus;
+    setModalElements = (tangStatus, hardonkStatus, sineStatus, selectedName, isGuest) => {
+        document.getElementById('Tang-status').innerText = tangStatus;
+        document.getElementById('Hardonk-status').innerText = hardonkStatus;
+        document.getElementById('Sine-status').innerText = sineStatus;
     
-        const isAnyoneAttending = [lukasStatus, silasStatus, antonStatus].includes('✅');
+        const isAnyoneAttending = [tangStatus, hardonkStatus, sineStatus].includes('✅');
         document.getElementById('names').disabled = !isAnyoneAttending;
     
         document.getElementById('names').value = selectedName;
@@ -57,14 +57,14 @@ class Modal {
         const firstDay = new Date(this.calendar.currentDate.getFullYear(), this.calendar.currentDate.getMonth(), 1).getDay();
         const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
 
-        const lukasStatus = document.getElementById('Lukas-status').innerText === '✅';
-        const silasStatus = document.getElementById('Silas-status').innerText === '✅';
-        const antonStatus = document.getElementById('Anton-status').innerText === '✅';
+        const tangStatus = document.getElementById('Tang-status').innerText === '✅';
+        const hardonkStatus = document.getElementById('Hardonk-status').innerText === '✅';
+        const sineStatus = document.getElementById('Sine-status').innerText === '✅';
 
         const attendance = {
-            Lukas: lukasStatus,
-            Silas: silasStatus,
-            Anton: antonStatus
+            tang: tangStatus,
+            hardonk: hardonkStatus,
+            sine: sineStatus
         };
 
         const selectedDateInfo = {
@@ -120,9 +120,9 @@ class Modal {
         }
 
         const allStatuses = [
-            document.getElementById('Lukas-status').textContent,
-            document.getElementById('Silas-status').textContent,
-            document.getElementById('Anton-status').textContent
+            document.getElementById('Tang-status').textContent,
+            document.getElementById('Hardonk-status').textContent,
+            document.getElementById('Sine-status').textContent
         ];
 
         const isAnyoneAttending = allStatuses.includes('✅');
