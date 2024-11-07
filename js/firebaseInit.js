@@ -16,4 +16,12 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app); 
 const auth = getAuth();
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js').then(reg => {
+        console.log('Service Worker registered:', reg);
+    }).catch(err => {
+        console.error('Service Worker registration failed:', err);
+    });
+}
+
 export { db, auth, onAuthStateChanged, signInAnonymously, ref, onValue, set };
