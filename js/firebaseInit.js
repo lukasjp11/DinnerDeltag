@@ -1,5 +1,4 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js';
-import { getAuth, onAuthStateChanged, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js';
 import { getDatabase, ref, onValue, set } from 'https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js';
 
 const firebaseConfig = {
@@ -13,7 +12,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app); 
-const auth = getAuth();
+const db = getDatabase(app);
 
-export { db, auth, onAuthStateChanged, signInAnonymously, ref, onValue, set };
+export { db, ref, onValue, set };
