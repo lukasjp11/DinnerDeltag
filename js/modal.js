@@ -62,9 +62,9 @@ class Modal {
         const sineStatus = document.getElementById('Sine-status').innerText === '✅';
 
         const attendance = {
-            tang: tangStatus,
-            hardonk: hardonkStatus,
-            sine: sineStatus
+            Tang: tangStatus,
+            Hardonk: hardonkStatus,
+            Sine: sineStatus
         };
 
         const selectedDateInfo = {
