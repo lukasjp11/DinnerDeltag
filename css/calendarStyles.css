@@ -28,6 +28,7 @@ header {
     margin-bottom: 10px;
     position: relative;
     padding: 10px;
+    min-width: 685px;
 }
 
 .logo {
