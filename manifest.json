@@ -2,7 +2,7 @@
     "name": "DinnerDeltag",
     "short_name": "DinnerDeltag",
     "description": "Et aftensmad-tilmeldingssystem",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#333333",

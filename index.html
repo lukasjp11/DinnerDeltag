@@ -7,24 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DinnerDeltag</title>
     <link rel="icon" href="./images/DinnerDeltag-logo-small.png" type="image/png">
-    <link rel="stylesheet" href="css/calendarStyles.css">
-    <link rel="stylesheet" href="css/modalStyles.css">
-    <script src="js/app.js" type="module" defer></script>
+    <link rel="stylesheet" href="./css/calendarStyles.css">
+    <link rel="stylesheet" href="./css/modalStyles.css">
+    <script src="./js/app.js" type="module" defer></script>
 
     <!-- PWA Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DinnerDeltag">
-    <link rel="apple-touch-icon" href="images/DinnerDeltag-logo-small.png">
+    <link rel="apple-touch-icon" href="./images/DinnerDeltag-logo-small.png">
     <!-- Add manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
 </head>
 
 <body>
     <div id="loader" class="loader"></div>
     <div id="calendar-container">
         <header>
-            <img src="images/DinnerDeltag-logo-small.png" alt="DinnerDeltag Logo" class="logo">
+            <img src="./images/DinnerDeltag-logo-small.png" alt="DinnerDeltag Logo" class="logo">
             <div class="month-container">
                 <button id="prevMonth" onclick="changeMonth(-1)" aria-label="Previous Month">&#10094;</button>
                 <h1 id="monthName"></h1>
@@ -86,7 +86,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js').then(
+                navigator.serviceWorker.register('./service-worker.js').then(
                     (registration) => {
                         console.log('Service Worker registered with scope:', registration.scope);
                     },
