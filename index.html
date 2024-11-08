@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- Ensure correct viewport settings -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DinnerDeltag</title>
     <link rel="icon" href="./images/DinnerDeltag-logo-small.png" type="image/png">
@@ -10,21 +11,24 @@
     <link rel="stylesheet" href="css/modalStyles.css">
     <script src="js/app.js" type="module" defer></script>
 
+    <!-- PWA Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DinnerDeltag">
-    <link rel="apple-touch-icon" href="DinnerDeltag-logo-small.png">
+    <link rel="apple-touch-icon" href="images/DinnerDeltag-logo-small.png">
+    <!-- Add manifest -->
+    <link rel="manifest" href="manifest.json">
 </head>
 
 <body>
     <div id="loader" class="loader"></div>
     <div id="calendar-container">
         <header>
-            <img src="./images/DinnerDeltag-logo-small.png" alt="DinnerDeltag Logo" class="logo">
-            <h1 id="monthName"></h1>
-            <div id="navButtons">
-                <button id="prevMonth" onclick="changeMonth(-1)">&#10094;</button>
-                <button id="nextMonth" onclick="changeMonth(1)">&#10095;</button>
+            <img src="images/DinnerDeltag-logo-small.png" alt="DinnerDeltag Logo" class="logo">
+            <div class="month-container">
+                <button id="prevMonth" onclick="changeMonth(-1)" aria-label="Previous Month">&#10094;</button>
+                <h1 id="monthName"></h1>
+                <button id="nextMonth" onclick="changeMonth(1)" aria-label="Next Month">&#10095;</button>
             </div>
         </header>
         <table id="calendar">
@@ -47,23 +51,21 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModalWithoutSaving()">&times;</span>
-            <h2>Deltagerinformation</h2>
-            <br><br>
+            <h3>Deltagelse:</h3>
             <div id="attendance-list">
-                <h3>Deltagelse:</h3>
-                <div id="Tang-attendance">
-                    <label>Tang:</label>
+                <div id="Tang-attendance" class="guest-container">
                     <span id="Tang-status" onclick="toggleAttendance('Tang')">✅</span>
+                    <label for="Tang-status">Tang</label>
                 </div>
-                <div id="Hardonk-attendance">
-                    <label>Hardonk:</label>
+                <div id="Hardonk-attendance" class="guest-container">
                     <span id="Hardonk-status" onclick="toggleAttendance('Hardonk')">✅</span>
+                    <label for="Hardonk-status">Hardonk</label>
                 </div>
-                <div id="Sine-attendance">
-                    <label>Sine:</label>
+                <div id="Sine-attendance" class="guest-container">
                     <span id="Sine-status" onclick="toggleAttendance('Sine')">✅</span>
+                    <label for="Sine-status">Sine</label>
                 </div>
-            </div>
+            </div>            
             <label for="names">Hvem laver mad?</label>
             <select id="names">
                 <option value="none">Ingen</option>
@@ -71,17 +73,16 @@
                 <option value="Hardonk">Hardonk</option>
                 <option value="Sine">Sine</option>
             </select>
-            <label for="guest">Gæster?</label>
-            <input type="checkbox" id="guest" name="guest">
-            <br><br>
-            <button onclick="closeModalAndSave()">Gem</button>
-            <button onclick="clearSelectedDate()">Ryd</button>
+            <div class="guest-container">
+                <input type="checkbox" id="guest" name="guest">
+                <label for="guest">Gæster?</label>
+            </div>
+            <div class="modal-buttons">
+                <button id="Delete-button" onclick="clearSelectedDate()">Ryd</button>
+                <button onclick="closeModalAndSave()">Gem</button>
+            </div>
         </div>
     </div>
-    <footer>
-        <p>Find koden og introduktion til brug på <a href="https://github.com/lukasjp11/DinnerDeltag"
-                target="_blank">GitHub</a>.</p>
-    </footer>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -96,7 +97,6 @@
             });
         }
     </script>
-
 </body>
 
 </html>

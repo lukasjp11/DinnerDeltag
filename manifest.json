@@ -5,16 +5,16 @@
     "start_url": "/index.html",
     "display": "standalone",
     "orientation": "portrait",
-    "background_color": "#FFFFFF",
-    "theme_color": "#000000",
+    "background_color": "#333333",
+    "theme_color": "#333333",
     "icons": [
       {
-        "src": "DinnerDeltag-logo-small.png",
+        "src": "images/DinnerDeltag-logo-small.png",
         "sizes": "60x60",
         "type": "image/png"
       },
       {
-        "src": "DinnerDeltag-logo-full.png",
+        "src": "images/DinnerDeltag-logo-full.png",
         "sizes": "1024x1024",
         "type": "image/png"
       }

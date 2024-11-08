@@ -16,26 +16,38 @@
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--calendar-bg-color);
     color: var(--text-color);
+    font-size: 16px;
 }
 
 header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 10px;
     margin-bottom: 20px;
-    position: relative;
 }
 
-#monthName {
-    margin-left: 10px;
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.month-container {
+    display: flex;
+    align-items: center;
+}
+
+.month-container h1 {
+    font-size: 2em;
+    margin: 0 10px;
+    text-align: center;
 }
 
 #navButtons {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
 }
 
 button {
@@ -44,9 +56,11 @@ button {
     border-radius: 5px;
     color: var(--text-color);
     cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: 1em;
+    padding: 10px;
     transition: background-color 0.3s ease;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 button:hover {
@@ -58,24 +72,28 @@ button:hover {
     border-radius: 10px;
     margin: auto;
     max-width: 800px;
-    min-width: 717px;
-    padding: 20px;
+    padding: 10px;
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
+    table-layout: fixed; /* Ensure equal column widths */
 }
 
 th, td {
     border: 1px solid var(--border-color);
-    padding: 10px;
+    padding: 5px;
     text-align: center;
+    font-size: 1em;
+    width: 91px;
 }
 
 td {
     cursor: pointer;
-    min-width: 75px;
+    height: 91px; /* Fixed height for all td */
+    vertical-align: top;
+    position: relative;
 }
 
 .today {
@@ -87,49 +105,18 @@ td {
     opacity: 0.5;
 }
 
-#calendar tbody td {
-    font-size: 16px;
-    height: 80px;
-    position: relative;
-    vertical-align: top;
-    width: 100px;
-}
-
 #calendar tbody td strong {
     display: block;
     margin-bottom: 5px;
 }
 
 #calendar tbody td div {
-    bottom: 0;
     color: var(--text-color);
-    font-size: 13px;
-    max-width: 90px;
+    font-size: 0.8em;
     overflow: hidden;
-    margin: auto;
-    left: 0;
     line-height: 1.2;
     padding: 5px;
-    position: absolute;
-    right: 0;
     word-break: break-word;
-}
-
-footer {
-    margin-top: 20px;
-    padding: 10px;
-    text-align: center;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    border-top: 1px solid var(--border-color);
-}
-
-footer a {
-    color: var(--dark-yellow);
-}
-
-footer a:hover {
-    color: white;
 }
 
 .loader {
