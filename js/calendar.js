@@ -147,7 +147,7 @@ class Calendar {
         let namesHTML = '';
         orderedNames.forEach(name => {
             if (name === cookName && cookName !== 'none') {
-                namesHTML += `<strong>${name.toUpperCase()}👨‍🍳</strong>`;
+                namesHTML += `<strong>${name.toUpperCase()}💃</strong>`;
             } else if (name !== 'none') {
                 namesHTML += `${name} ${dateInfo.attendance[name] ? '✅' : '❌'}<br>`;
             }
