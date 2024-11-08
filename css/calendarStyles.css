@@ -24,22 +24,25 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: relative;
     padding: 10px;
-    margin-bottom: 20px;
 }
 
 .logo {
-    width: 50px;
-    height: auto;
+    position: absolute;
+    left: 0;
+    width: 75px;
 }
 
 .month-container {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.month-container h1 {
+#monthName {
     font-size: 2em;
     margin: 0 10px;
     text-align: center;
@@ -48,6 +51,8 @@ header {
 #navButtons {
     display: flex;
     gap: 10px;
+    position: absolute;
+    right: 0;
 }
 
 button {
@@ -78,7 +83,7 @@ button:hover {
 table {
     border-collapse: collapse;
     width: 100%;
-    table-layout: fixed; /* Ensure equal column widths */
+    table-layout: fixed;
 }
 
 th, td {
@@ -91,7 +96,7 @@ th, td {
 
 td {
     cursor: pointer;
-    height: 91px; /* Fixed height for all td */
+    height: 91px;
     vertical-align: top;
     position: relative;
 }

@@ -6,7 +6,7 @@
     <!-- Ensure correct viewport settings -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DinnerDeltag</title>
-    <link rel="icon" href="./images/DinnerDeltag-logo-small.png" type="image/png">
+    <link rel="icon" href="./images/DinnerDeltag-logo.png" type="image/png">
     <link rel="stylesheet" href="./css/calendarStyles.css">
     <link rel="stylesheet" href="./css/modalStyles.css">
     <script src="./js/app.js" type="module" defer></script>
@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="DinnerDeltag">
-    <link rel="apple-touch-icon" href="./images/DinnerDeltag-logo-small.png">
+    <link rel="apple-touch-icon" href="./images/DinnerDeltag-logo.png">
     <!-- Add manifest -->
     <link rel="manifest" href="./manifest.json">
 </head>
@@ -24,10 +24,12 @@
     <div id="loader" class="loader"></div>
     <div id="calendar-container">
         <header>
-            <img src="./images/DinnerDeltag-logo-small.png" alt="DinnerDeltag Logo" class="logo">
+            <img src="./images/DinnerDeltag-logo.png" alt="DinnerDeltag Logo" class="logo">
             <div class="month-container">
+                <h1 id="monthName">Month Year</h1>
+            </div>
+            <div id="navButtons">
                 <button id="prevMonth" onclick="changeMonth(-1)" aria-label="Previous Month">&#10094;</button>
-                <h1 id="monthName"></h1>
                 <button id="nextMonth" onclick="changeMonth(1)" aria-label="Next Month">&#10095;</button>
             </div>
         </header>
@@ -78,7 +80,7 @@
                 <label for="guest">Gæster?</label>
             </div>
             <div class="modal-buttons">
-                <button id="Delete-button" onclick="clearSelectedDate()">Ryd</button>
+                <button onclick="clearSelectedDate()">Ryd</button>
                 <button onclick="closeModalAndSave()">Gem</button>
             </div>
         </div>

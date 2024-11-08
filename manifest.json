@@ -9,12 +9,7 @@
     "theme_color": "#333333",
     "icons": [
       {
-        "src": "images/DinnerDeltag-logo-small.png",
-        "sizes": "60x60",
-        "type": "image/png"
-      },
-      {
-        "src": "images/DinnerDeltag-logo-full.png",
+        "src": "images/DinnerDeltag-logo.png",
         "sizes": "1024x1024",
         "type": "image/png"
       }
