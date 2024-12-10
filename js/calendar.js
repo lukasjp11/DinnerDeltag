@@ -1,5 +1,6 @@
 import { db, ref, onValue, } from './firebaseInit.js';
 import Modal from './modal.js';
+import { userNames } from './userNames.js';
 
 class Calendar {
     constructor() {
@@ -7,7 +8,7 @@ class Calendar {
         this.selectedDates = [];
         this.clickedDate = null;
         this.modal = new Modal(this);
-    }
+    };
 
     init = () => {
         const dbRef = ref(db, 'selectedDates/');
@@ -18,7 +19,7 @@ class Calendar {
             this.updateCalendar();
             loader.style.display = 'none';
         });
-    }
+    };
 
     updateCalendar = () => {
         this.setMonthName();
@@ -27,7 +28,7 @@ class Calendar {
         this.highlightToday();
         this.highlightSelectedDates();
         this.attachClickEventToCells();
-    }
+    };
 
     setMonthName = () => {
         const monthName = document.getElementById('monthName');
@@ -46,12 +47,12 @@ class Calendar {
             'December'
         ];
         monthName.innerText = `${monthNames[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
-    }
+    };
 
     clearPreviousCalendar = () => {
         const calendarBody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
         calendarBody.innerHTML = '';
-    }
+    };
 
     createCalendar = () => {
         const calendarBody = document.getElementById('calendar').getElementsByTagName('tbody')[0];
@@ -59,18 +60,18 @@ class Calendar {
         firstDay = (firstDay === 0) ? 6 : firstDay - 1;
         const totalDays = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
         let dayCounter = 1;
-    
+
         for (let i = 0; i < 6; i++) {
             const row = document.createElement('tr');
             dayCounter = this.fillCells(row, i, firstDay, totalDays, dayCounter);
             calendarBody.appendChild(row);
         }
-    }
-    
+    };
+
     fillCells = (row, weekIndex, firstDay, totalDays, dayCounter) => {
         for (let dayIndex = 0; dayIndex < 7; dayIndex++) {
             const cell = document.createElement('td');
-    
+
             if (weekIndex === 0 && dayIndex < firstDay) {
                 this.fillGrayedOutDays(cell, dayIndex, true, firstDay);
             } else if (dayCounter > totalDays) {
@@ -83,8 +84,8 @@ class Calendar {
             row.appendChild(cell);
         }
         return dayCounter;
-    }    
-    
+    };
+
     fillGrayedOutDays = (cell, dayNum, isPrevMonth, firstDay) => {
         if (isPrevMonth) {
             const prevMonthLastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 0).getDate();
@@ -93,7 +94,7 @@ class Calendar {
             cell.innerText = dayNum;
         }
         cell.classList.add('grayed-out');
-    }    
+    };
 
     highlightToday = () => {
         const today = new Date();
@@ -106,7 +107,7 @@ class Calendar {
                 todayCell.classList.add('today');
             }
         }
-    }
+    };
 
     highlightSelectedDates = () => {
         this.selectedDates.forEach(dateInfo => {
@@ -114,36 +115,48 @@ class Calendar {
                 this.updateCell(dateInfo);
             }
         });
-    }
-    
+    };
+
     isDateInCurrentMonth = (dateInfo) => {
         const currentYear = this.currentDate.getFullYear();
         const currentMonth = this.currentDate.getMonth();
         return dateInfo.year === currentYear && dateInfo.month === currentMonth;
-    }
-    
+    };
+
     updateCell = (dateInfo) => {
         const cell = this.getCellForDate(dateInfo);
         if (!cell) return;
     
-        const noOneAttending = !Object.values(dateInfo.attendance).some(attending => attending);
-        cell.style.backgroundColor = noOneAttending ? 'red' : dateInfo.isCookSelected ? 'green' : '#DAA520';
+        const allUndecided = Object.values(dateInfo.attendance).every(status => status === 'undecided');
+        const noOneAttending = Object.values(dateInfo.attendance).every(status => status === false);
+    
+        if (allUndecided) {
+            cell.style.backgroundColor = 'lightgray';
+            cell.innerHTML = `<strong>${dateInfo.date}</strong><div>❓</div>`;
+        } else if (noOneAttending) {
+            cell.style.backgroundColor = 'red';
+        } else {
+            cell.style.backgroundColor = dateInfo.isCookSelected ? 'green' : '#DAA520';
+        }
+    
         cell.style.color = 'white';
     
         const namesHTML = this.generateNamesHTML(dateInfo);
-        cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
-    }
-    
+        if (!allUndecided) {
+            cell.innerHTML = `<strong>${dateInfo.date}</strong><div>${namesHTML}${dateInfo.guest ? '(gæster)' : ''}</div>`;
+        }
+    };    
+
     getCellForDate = (dateInfo) => {
         return document.querySelector(`#calendar tbody tr:nth-child(${Math.ceil((dateInfo.date + dateInfo.firstDay) / 7)}) td:nth-child(${(dateInfo.date + dateInfo.firstDay - 1) % 7 + 1})`);
-    }
-    
+    };
+
     generateNamesHTML = (dateInfo) => {
-        const allNames = ['Tang', 'Hardonk', 'Sine'];
+        const allNames = userNames;
         const cookName = dateInfo.person;
         const otherNames = allNames.filter(name => name !== cookName);
         const orderedNames = [cookName].concat(otherNames);
-    
+
         let namesHTML = '';
         orderedNames.forEach(name => {
             if (name === cookName && cookName !== 'none') {
@@ -153,7 +166,7 @@ class Calendar {
             }
         });
         return namesHTML;
-    }
+    };
 
     attachClickEventToCells = () => {
         document.querySelectorAll('#calendar tbody td').forEach(cell => {
@@ -164,7 +177,7 @@ class Calendar {
                 }
             });
         });
-    }
+    };
 
     changeMonth = (direction) => {
         const originalDate = this.currentDate.getDate();
@@ -173,7 +186,7 @@ class Calendar {
         const maxDayInNewMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
         this.currentDate.setDate(Math.min(originalDate, maxDayInNewMonth));
         this.updateCalendar();
-    }
-}
+    };
+};
 
 export default Calendar;

@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Kalender her via JavaScript -->
+                <!-- Calendar generated dynamically -->
             </tbody>
         </table>
     </div>
@@ -51,25 +51,11 @@
             <span class="close" onclick="closeModalWithoutSaving()">&times;</span>
             <h3>Deltagelse:</h3>
             <div id="attendance-list">
-                <div id="Tang-attendance" class="guest-container">
-                    <span id="Tang-status" onclick="toggleAttendance('Tang')">✅</span>
-                    <label for="Tang-status">Tang</label>
-                </div>
-                <div id="Hardonk-attendance" class="guest-container">
-                    <span id="Hardonk-status" onclick="toggleAttendance('Hardonk')">✅</span>
-                    <label for="Hardonk-status">Hardonk</label>
-                </div>
-                <div id="Sine-attendance" class="guest-container">
-                    <span id="Sine-status" onclick="toggleAttendance('Sine')">✅</span>
-                    <label for="Sine-status">Sine</label>
-                </div>
-            </div>            
+                <!-- Attendance list generated dynamically -->
+            </div>
             <label for="names">Hvem handler ind?</label>
             <select id="names">
-                <option value="none">Ingen</option>
-                <option value="Tang">Tang</option>
-                <option value="Hardonk">Hardonk</option>
-                <option value="Sine">Sine</option>
+                <!-- Dropdown options generated dynamically -->
             </select>
             <div class="guest-container">
                 <input type="checkbox" id="guest" name="guest">
